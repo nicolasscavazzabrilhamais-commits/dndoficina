@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DnD Serviços Automotivos</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#222}
+a{text-decoration:none;color:inherit}
+
+:root{--red:#e30613;--dark:#101010;--gray:#f1f1f1}
+
+.top{
+  background:#0b0b0b;color:#fff;height:74px;padding:0 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:99;border-bottom:1px solid #222
+}
+.logo{font-size:29px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--red)}
+.menu{display:flex;gap:30px;font-size:14px;font-weight:700}
+.menu a:hover{color:var(--red)}
+.client{
+  background:var(--red);padding:12px 18px;border-radius:3px;font-size:12px
+}
+
+.hero{
+  min-height:560px;
+  background:
+   linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.25)),
+   url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=85");
+  background-size:cover;background-position:center;
+  display:flex;align-items:center;padding:80px 8%;color:#fff
+}
+.hero-box{max-width:650px}
+.hero small{font-size:13px;letter-spacing:3px;color:#ddd;font-weight:bold}
+.hero h1{font-size:64px;line-height:.98;margin:18px 0;text-transform:uppercase}
+.hero h1 span{color:var(--red)}
+.hero p{font-size:18px;line-height:1.6;color:#eee;max-width:570px}
+.red-btn{
+ display:inline-block;background:var(--red);color:#fff;padding:15px 24px;
+ margin-top:28px;font-weight:bold;border-radius:2px
+}
+.red-btn:hover{background:#b9000b}
+.whatsapp{background:#25d366!important}
+.whatsapp:hover{background:#128c7e!important}
+
+.block{padding:75px 7%}
+.title{text-align:center;margin-bottom:45px}
+.title h2{font-size:38px;text-transform:uppercase}
+.title h2 span{color:var(--red)}
+.title p{margin-top:10px;color:#777}
+
+.services{
+ display:grid;grid-template-columns:repeat(4,1fr);
+ border-top:1px solid #ddd;border-left:1px solid #ddd
+}
+.service{
+ background:#fff;min-height:190px;padding:28px 24px;
+ border-right:1px solid #ddd;border-bottom:1px solid #ddd;
+ transition:.2s
+}
+.service:hover{background:#f8f8f8;transform:translateY(-3px)}
+.service .ico{font-size:38px;margin-bottom:18px}
+.service h3{font-size:17px;text-transform:uppercase;margin-bottom:10px}
+.service p{font-size:14px;color:#777;line-height:1.55}
+
+.find{
+ background:#111;color:#fff;
+ padding:80px 7%
+}
+.find .title p{color:#aaa}
+.workshops{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.shop{
+ background:#fff;color:#222;padding:24px;border-left:5px solid var(--red);
+ min-height:150px
+}
+.shop small{color:#e30613;font-weight:bold;text-transform:uppercase}
+.shop h3{margin:8px 0;font-size:20px}
+.shop p{color:#666;line-height:1.55;font-size:14px}
+.map{
+ display:inline-block;margin-top:15px;color:var(--red);font-weight:bold;font-size:13px
+}
+
+.about{
+ display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center
+}
+.about img{width:100%;height:400px;object-fit:cover}
+.about h2{font-size:40px;text-transform:uppercase;margin-bottom:18px}
+.about h2 span{color:var(--red)}
+.about p{line-height:1.75;color:#666;margin-bottom:15px}
+
+.cta{
+ background:var(--red);color:#fff;text-align:center;padding:65px 7%
+}
+.cta h2{font-size:38px;text-transform:uppercase}
+.cta p{margin:12px 0 22px}
+.cta .white{
+ display:inline-block;background:#fff;color:#111;padding:14px 25px;font-weight:bold
+}
+
+.faq{max-width:900px;margin:auto}
+.faq details{border-bottom:1px solid #ddd;padding:20px 5px}
+.faq summary{cursor:pointer;font-weight:bold;font-size:17px}
+.faq p{color:#666;line-height:1.6;padding-top:12px}
+
+footer{
+ background:#080808;color:#aaa;padding:45px 7%;
+ display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px
+}
+footer h3{color:#fff;margin-bottom:15px}
+footer p,footer a{font-size:13px;line-height:1.9}
+footer a:hover{color:#fff}
+.copy{grid-column:1/-1;border-top:1px solid #292929;padding-top:20px;text-align:center}
+
+@media(max-width:950px){
+ .services{grid-template-columns:repeat(2,1fr)}
+ .workshops{grid-template-columns:repeat(2,1fr)}
+ footer{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+ .top{height:auto;padding:18px 5%;flex-wrap:wrap;gap:15px}
+ .menu{order:3;width:100%;justify-content:center;gap:13px;flex-wrap:wrap}
+ .hero{min-height:500px;padding:55px 7%}
+ .hero h1{font-size:43px}
+ .services,.workshops,.about,footer{grid-template-columns:1fr}
+ .block{padding:55px 6%}
+ .about img{height:280px}
+ .copy{grid-column:auto}
+}
+
+/* TIPOGRAFIA PREMIUM */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap');
+
+body{
+  font-family:'Montserrat',Arial,Helvetica,sans-serif;
+  letter-spacing:.1px;
+}
+.logo{
+  font-family:'Oswald','Montserrat',Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+.logo small{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:600;
+}
+.menu{
+  font-family:'Montserrat',Arial,sans-serif;
+  letter-spacing:.5px;
+}
+.menu a{
+  transition:.2s;
+}
+.hero small{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:3.5px;
+}
+.hero h1{
+  font-family:'Oswald','Montserrat',Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+.hero p{
+  font-weight:400;
+  letter-spacing:.1px;
+}
+.red-btn,.client{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+.title h2,
+.find .title h2,
+.cta h2{
+  font-family:'Oswald','Montserrat',Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:.8px;
+}
+.title p{
+  font-weight:400;
+}
+.service h3{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:800;
+  letter-spacing:.3px;
+}
+.service p,.shop p,.about p,.faq p,footer p{
+  font-weight:400;
+}
+.shop h3{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:800;
+}
+.about h2{
+  font-family:'Oswald','Montserrat',Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:.8px;
+}
+.faq summary{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:700;
+}
+footer h3{
+  font-family:'Montserrat',Arial,sans-serif;
+  font-weight:800;
+}
+
+
+.service-photo{position:relative;overflow:hidden;padding:0;cursor:pointer;min-height:245px}
+.service-photo>img{width:100%;height:145px;object-fit:cover;display:block;transition:.35s}
+.service-photo:hover>img{transform:scale(1.06)}
+.service-photo .service-info{padding:16px 20px}
+.service-photo .ico{font-size:25px;margin:0 0 7px}
+.service-photo h3{margin-bottom:4px}
+.service-photo p{font-size:12px;color:#e30613!important;font-weight:700}
+.service-modal{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:flex-start;justify-content:center;padding:20px;z-index:5000;overflow-y:auto;box-sizing:border-box}
+.service-modal.open{display:flex;overflow-y:auto}
+.service-modal-box{background:#fff;max-width:850px;width:100%;max-height:calc(100vh - 40px);margin:auto 0;overflow-y:auto;overflow-x:hidden;border-radius:6px;position:relative;box-shadow:0 20px 70px rgba(0,0,0,.5);animation:modalIn .2s ease;box-sizing:border-box}
+.service-modal-box img{width:100%;height:360px;object-fit:cover;display:block}
+.service-modal-content{padding:28px 32px 32px}
+.service-modal-content h2{font-family:'Oswald','Montserrat',Arial,sans-serif;font-size:34px;text-transform:uppercase;margin-bottom:10px;color:#111;position:relative;padding-left:16px;-webkit-text-stroke:.2px #000}.service-modal-content h2:before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:5px;background:#e30613}
+.service-modal-content h2{position:relative;padding-left:16px}.service-modal-content h2:before{content:'';position:absolute;left:0;top:5px;bottom:5px;width:5px;background:#e30613}
+.service-modal-content p{color:#666;line-height:1.7;font-size:15px}
+.close-modal{position:absolute;right:14px;top:12px;width:42px;height:42px;border:0;border-radius:50%;background:#e30613;color:#fff;font-size:27px;cursor:pointer;line-height:1}
+@keyframes modalIn{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+@media(max-width:650px){.service-modal-box img{height:230px}.service-modal-content{padding:22px}.service-modal-content h2{font-size:27px}}
+
+
+.logo .d-white{color:#fff !important;-webkit-text-stroke:0.7px #000;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+.logo .n-red{color:#e30613 !important;-webkit-text-stroke:0.7px #000;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+
+.service-modal-box::-webkit-scrollbar{width:9px}
+.service-modal-box::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px}
+.service-modal-box::-webkit-scrollbar-track{background:#eee}
+@media(max-width:650px){
+  .service-modal{padding:10px}
+  .service-modal-box{max-height:calc(100vh - 20px);margin:auto 0}
+}
+
+/* Títulos em serif bold */
+h1,h2,h3,h4,.hero-title,.section-title,.service-modal-content h2,.service h3{
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-weight: 800 !important;
+  letter-spacing: .2px;
+}
+/* Área do cliente mais nítida */
+.client-area-text{
+  display:inline-block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight:800;
+  color:#fff;
+  -webkit-text-stroke:.35px #000;
+  text-shadow:0 1px 2px rgba(0,0,0,.45);
+  white-space:nowrap;
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="logo"><span class="d-white">D</span><span class="n-red">n</span><span class="d-white">D</span> CAR SERVICE</div>
+  <nav class="menu">
+    <a href="#servicos">Serviços</a>
+    <a href="#oficinas">Oficinas</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#faq">Dúvidas</a>
+  </nav>
+  <a class="client" href="https://wa.me/5511966702230" target="_blank" rel="noopener"><span class="client-area-text">ÁREA DO CLIENTE</span></a>
+</header>
+
+<section class="hero">
+ <div class="hero-box">
+  <small>MANUTENÇÃO AUTOMOTIVA</small>
+  <h1>Seu carro.<br><span>Nosso serviço.</span></h1>
+  <p>Serviços automotivos para manutenção, diagnóstico e cuidados com seu veículo em um ambiente profissional.</p>
+  <a class="red-btn" href="#servicos">CONHEÇA NOSSOS SERVIÇOS</a>
+ </div>
+</section>
+
+<section class="block" id="servicos">
+ <div class="title">
+  <h2>Nossos <span>serviços</span></h2>
+  <p>Confira os principais serviços disponíveis na DnD Car Service.</p>
+ </div>
+ <div class="services">
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Diagnóstico Automotivo"
+    data-text="Realizamos uma avaliação completa do veículo para identificar falhas, ruídos, alertas no painel e problemas que podem não ser percebidos no uso diário. Utilizamos procedimentos de diagnóstico para entender a origem do defeito antes de iniciar o reparo. Dessa forma, buscamos evitar trocas desnecessárias de peças e orientar o cliente sobre o que realmente precisa ser feito para manter o carro seguro e funcionando corretamente."
+    data-image="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=700&q=80" alt="Diagnóstico automotivo">
+    <div class="service-info"><div class="ico">🔎</div><h3>Diagnóstico</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Arrefecimento"
+    data-text="Cuidamos do sistema responsável por controlar a temperatura do motor. Verificamos componentes como radiador, reservatório, mangueiras, conexões, ventoinha e fluido de arrefecimento. Nosso trabalho busca identificar vazamentos, superaquecimento e outras irregularidades que podem causar danos ao motor. Fazemos a manutenção necessária e orientamos sobre os cuidados para manter o sistema funcionando de maneira adequada."
+    data-image="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=700&q=80" alt="Sistema de arrefecimento">
+    <div class="service-info"><div class="ico">💧</div><h3>Arrefecimento</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Câmbio"
+    data-text="Realizamos serviços relacionados ao sistema de transmissão, avaliando o funcionamento do câmbio e seus principais componentes. Procuramos identificar sintomas como dificuldade para engatar marchas, trancos, ruídos, vazamentos ou funcionamento irregular. A partir da avaliação, explicamos ao cliente o problema encontrado e indicamos os procedimentos de manutenção ou reparo necessários para preservar o funcionamento do veículo."
+    data-image="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=85" alt="Câmbio automotivo">
+    <div class="service-info"><div class="ico">⚙️</div><h3>Câmbio</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Embreagem"
+    data-text="A embreagem é fundamental para transmitir a força do motor para as rodas e permitir as trocas de marcha. Avaliamos sinais como pedal muito pesado, dificuldade para engatar marchas, trepidações, patinação e ruídos. Nosso serviço busca identificar o desgaste do conjunto e orientar sobre o reparo adequado, ajudando a evitar que um problema simples evolua para uma falha maior."
+    data-image="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=700&q=80" alt="Embreagem e veículo">
+    <div class="service-info"><div class="ico">🔧</div><h3>Embreagem</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Alinhamento"
+    data-text="Realizamos o alinhamento das rodas para ajudar o veículo a manter uma trajetória correta e proporcionar maior controle ao motorista. Verificamos sinais como volante torto, carro puxando para um dos lados e desgaste irregular dos pneus. O serviço também contribui para preservar os pneus e melhorar o comportamento do veículo durante a condução."
+    data-image="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=700&q=80" alt="Roda e alinhamento">
+    <div class="service-info"><div class="ico">📐</div><h3>Alinhamento</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Balanceamento"
+    data-text="O balanceamento das rodas ajuda a reduzir vibrações e irregularidades durante a condução. Avaliamos o conjunto roda e pneu e corrigimos possíveis desequilíbrios. Esse cuidado pode proporcionar uma condução mais confortável, além de contribuir para o desgaste mais uniforme dos pneus e reduzir esforços desnecessários em componentes do veículo."
+    data-image="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?auto=format&fit=crop&w=700&q=80" alt="Roda automotiva">
+    <div class="service-info"><div class="ico">⭕</div><h3>Balanceamento</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Suspensão"
+    data-text="Fazemos a avaliação dos componentes da suspensão, como amortecedores, molas, buchas, bieletas e demais elementos relacionados ao sistema. Investigamos barulhos, impactos, instabilidade, desgaste irregular dos pneus e alterações no comportamento do carro. Nosso objetivo é encontrar componentes desgastados ou danificados e orientar o cliente sobre a manutenção necessária para manter estabilidade, conforto e segurança."
+    data-image="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=1200&q=85" alt="Suspensão automotiva">
+    <div class="service-info"><div class="ico">🛞</div><h3>Suspensão</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Freios"
+    data-text="O sistema de freios é um dos principais itens de segurança do veículo. Verificamos componentes como pastilhas, discos, tambores, lonas, fluido e outros elementos do sistema, observando sinais de desgaste ou funcionamento irregular. Quando encontramos alguma necessidade de manutenção, explicamos o problema e indicamos o serviço adequado para manter a eficiência da frenagem."
+    data-image="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=700&q=80" alt="Sistema de freios">
+    <div class="service-info"><div class="ico">🛑</div><h3>Freios</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Injeção Eletrônica"
+    data-text="Realizamos avaliação do sistema de injeção eletrônica para identificar falhas que podem causar perda de desempenho, aumento de consumo, dificuldade para ligar ou luz de advertência no painel. Analisamos os sintomas apresentados pelo veículo e buscamos localizar a origem do problema. Depois da avaliação, explicamos ao cliente o que foi encontrado e quais procedimentos podem ser necessários."
+    data-image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=700&q=80" alt="Diagnóstico eletrônico">
+    <div class="service-info"><div class="ico">💻</div><h3>Injeção</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Correias"
+    data-text="Inspecionamos as correias e os componentes relacionados ao funcionamento do motor, procurando sinais de desgaste, rachaduras, ressecamento, folgas ou danos. A manutenção preventiva é importante porque uma correia danificada pode provocar problemas no funcionamento do veículo. Orientamos o cliente sobre a condição dos componentes e sobre a necessidade de substituição quando identificamos desgaste."
+    data-image="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=700&q=80" alt="Motor automotivo">
+    <div class="service-info"><div class="ico">🔄</div><h3>Correias</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Troca de Óleo"
+    data-text="Realizamos a troca de óleo conforme a necessidade do veículo e as especificações adequadas para o motor. Também verificamos o estado geral relacionado à lubrificação e orientamos sobre a importância de manter as trocas em dia. A lubrificação adequada ajuda a reduzir o atrito entre componentes internos e faz parte dos cuidados básicos para preservar o funcionamento do motor."
+    data-image="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=700&q=80" alt="Manutenção automotiva">
+    <div class="service-info"><div class="ico">🛢️</div><h3>Troca de óleo</h3><p>Toque para saber mais</p></div>
+  </article>
+
+  <article class="service service-photo" onclick="openService(this)"
+    data-title="Higienização"
+    data-text="Realizamos serviços de higienização para ajudar a manter o interior do veículo mais limpo, agradável e bem cuidado. O trabalho pode envolver a limpeza de diferentes superfícies e áreas internas, de acordo com a necessidade do carro. Nosso objetivo é melhorar as condições de uso do veículo e proporcionar ao cliente um ambiente mais confortável no dia a dia."
+    data-image="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=1200&q=85">
+    <img src="https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=700&q=80" alt="Interior de carro">
+    <div class="service-info"><div class="ico">✨</div><h3>Higienização</h3><p>Toque para saber mais</p></div>
+  </article>
+</div>
+</section>
+
+<section class="find" id="oficinas">
+ <div class="title">
+  <h2>Encontre nossa <span>oficina</span></h2>
+  <p>Veja os dados da DnD Mecânica e entre em contato para atendimento.</p>
+ </div>
+ <div class="workshops">
+  <article class="shop">
+   <small>OFICINA</small><h3>DnD // Santo André - SP</h3>
+   <p>Rua Batávia, 807 – Parque Novo Oratório, Santo André – SP</p>
+   <a class="map" href="https://www.google.com/maps/search/?api=1&query=Rua+Batavia+807+Parque+Novo+Oratorio+Santo+Andre+SP" target="_blank">VER NO MAPA →</a>
+  </article>
+  <article class="shop">
+   <small>ATENDIMENTO</small><h3>Fale conosco</h3>
+   <p>📱 +55 11 96670-2230<br>Segunda a sexta: 08:00 às 17:30</p>
+   <a class="map" href="https://wa.me/5511966702230" target="_blank" rel="noopener">WHATSAPP →</a>
+  </article>
+  <article class="shop">
+   <small>HORÁRIO</small><h3>Funcionamento</h3>
+   <p>Segunda a sexta-feira: 08:00 às 17:30<br>Sábado e domingo: Fechado</p>
+  </article>
+ </div>
+</section>
+
+<section class="block about" id="sobre">
+ <div>
+  <img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c0d8b7?auto=format&fit=crop&w=1200&q=85" alt="Oficina automotiva">
+ </div>
+ <div>
+  <h2>Sobre a <span>DnD</span></h2>
+  <p>A DnD Mecânica trabalha com manutenção e serviços automotivos para veículos de passeio.</p>
+  <p>O objetivo é oferecer um atendimento claro, explicar os serviços necessários e cuidar de cada veículo com atenção.</p>
+  <a class="red-btn" href="https://wa.me/5511966702230" target="_blank" rel="noopener">FALE CONOSCO</a>
+ </div>
+</section>
+
+<section class="cta">
+ <h2>Fale com a DnD</h2>
+ <p>Precisa de manutenção ou quer tirar uma dúvida?</p>
+ <a class="white" href="https://wa.me/5511966702230" target="_blank" rel="noopener">💬 WHATSAPP</a>
+</section>
+
+<section class="block" id="faq">
+ <div class="title">
+  <h2>Dúvidas <span>frequentes</span></h2>
+ </div>
+ <div class="faq">
+  <details><summary>Como faço para falar com a DnD?</summary><p>Clique em qualquer botão de WhatsApp da página para abrir uma conversa diretamente com a oficina.</p></details>
+  <details><summary>Qual é o horário de atendimento?</summary><p>Segunda a sexta-feira, das 08:00 às 17:30. Sábado e domingo: fechado.</p></details>
+  <details><summary>Onde a oficina está localizada?</summary><p>Rua Batávia, 807, Parque Novo Oratório, Santo André - SP.</p></details>
+  <details><summary>Preciso agendar?</summary><p>Entre em contato pelo WhatsApp para verificar o atendimento e combinar o melhor horário.</p></details>
+ </div>
+</section>
+
+
+<div class="service-modal" id="serviceModal" onclick="closeService(event)">
+  <div class="service-modal-box">
+    <button class="close-modal" aria-label="Fechar" onclick="closeService()">×</button>
+    <img id="modalImage" src="" alt="">
+    <div class="service-modal-content">
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+      <a class="red-btn" href="https://wa.me/5511966702230" target="_blank" rel="noopener noreferrer">💬 Fale Conosco</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+ <div>
+  <h3>DnD Car Service</h3>
+  <p>Manutenção e serviços automotivos.</p>
+  <p>📱 +55 11 96670-2230</p>
+ </div>
+ <div>
+  <h3>Navegação</h3>
+  <p><a href="#servicos">Serviços</a></p>
+  <p><a href="#oficinas">Oficina</a></p>
+  <p><a href="#faq">Dúvidas</a></p>
+ </div>
+ <div>
+  <h3>Endereço</h3>
+  <p>Rua Batávia, 807<br>Parque Novo Oratório<br>Santo André - SP</p>
+ </div>
+ <div class="copy">© 2026 DnD Car Service - Todos os direitos reservados.</div>
+</footer>
+
+
+<script>
+function openService(card){
+  const modal=document.getElementById('serviceModal');
+  document.getElementById('modalImage').src=card.dataset.image;
+  document.getElementById('modalImage').alt=card.dataset.title;
+  document.getElementById('modalTitle').textContent=card.dataset.title;
+  document.getElementById('modalText').textContent=card.dataset.text;
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeService(event){
+  if(event && event.target.closest('.service-modal-box')) return;
+  document.getElementById('serviceModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    document.getElementById('serviceModal').classList.remove('open');
+    document.body.style.overflow='';
+  }
+});
+</script>
+
+</body>
+</html>
