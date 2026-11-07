@@ -1524,7 +1524,7 @@
         </p>
       </div>
 
-      <div class="services-grid">
+      <div class="services-grid" id="servicesGrid">
 
         <!-- 1. DIAGNÓSTICO -->
         <article class="service-card"
@@ -2088,8 +2088,87 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT -->
+  <!-- SUPABASE CLIENT & JAVASCRIPT -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
+    // Configurações do Supabase
+    const SUPABASE_URL = 'https://apzfczbmgderdmbkeyva.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_kF9wJ0eDD51CchH_N-_TAw_V0dYTQEm';
+    const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+    // Registra lead de contato no Supabase de forma transparente
+    async function trackLead(interestedService, origin) {
+      if (!supabaseClient) return;
+      try {
+        await supabaseClient.from('leads').insert([{
+          interested_service: interestedService || null,
+          origin: origin || 'site_click',
+          message: `Interesse demonstrado em: ${interestedService || 'Atendimento Geral'}`
+        }]);
+      } catch (err) {
+        console.warn('Registro de lead silencioso:', err);
+      }
+    }
+
+    // Carrega serviços dinamicamente do Supabase se houver alteração cadastrada
+    async function loadDynamicServices() {
+      if (!supabaseClient) return;
+      try {
+        const { data: services, error } = await supabaseClient
+          .from('services')
+          .select('*')
+          .eq('is_active', true)
+          .order('display_order', { ascending: true });
+
+        if (error || !services || services.length === 0) return;
+
+        const grid = document.getElementById('servicesGrid');
+        if (!grid) return;
+
+        // Renderiza cards dinâmicos do Supabase
+        grid.innerHTML = services.map(svc => {
+          const badgeHtml = svc.badge ? `<span class="service-badge ${svc.badge.toLowerCase().includes('especialidade') || svc.badge.toLowerCase().includes('scanner') || svc.badge.toLowerCase().includes('crítico') ? 'featured' : ''}">${escapeHtml(svc.badge)}</span>` : '';
+          return `
+            <article class="service-card"
+              onclick="openService(this)"
+              data-title="${escapeHtml(svc.name)}"
+              data-badge="${escapeHtml(svc.badge || 'Especialidade DnD')}"
+              data-text="${escapeHtml(svc.full_description)}"
+              data-image="${escapeHtml(svc.image_url)}">
+              <div class="service-card-media">
+                <img src="${escapeHtml(svc.image_url)}" alt="${escapeHtml(svc.name)}">
+                ${badgeHtml}
+                <div class="service-icon-floating"><i class="fa-solid ${escapeHtml(svc.icon)}"></i></div>
+              </div>
+              <div class="service-card-body">
+                <h3>${escapeHtml(svc.name)}</h3>
+                <p>${escapeHtml(svc.short_description)}</p>
+                <div class="service-card-footer">
+                  <span>Ver detalhes</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+
+        // Reanexa os fallbacks de imagem aos novos cards
+        attachImageFallbacks();
+      } catch (err) {
+        console.warn('Usando catálogo local em cache:', err);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
     function openService(card) {
       const modal = document.getElementById('serviceModal');
       const title = card.dataset.title;
@@ -2107,9 +2186,15 @@
       const waBtn = document.getElementById('modalWhatsAppBtn');
       const waMsg = encodeURIComponent(`Olá! Estava vendo o serviço "${title}" no site da DnD e gostaria de tirar uma dúvida ou pedir orçamento.`);
       waBtn.href = `https://wa.me/5511966702230?text=${waMsg}`;
+      waBtn.onclick = function() {
+        trackLead(title, 'modal_whatsapp_click');
+      };
 
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+
+      // Registra intenção de visualização do serviço
+      trackLead(title, 'service_card_open');
     }
 
     function closeService(event) {
@@ -2129,7 +2214,7 @@
     });
 
     // Fallback gracioso para imagens que não carregarem
-    document.addEventListener('DOMContentLoaded', function() {
+    function attachImageFallbacks() {
       document.querySelectorAll('.service-card-media img').forEach(function(img) {
         img.addEventListener('error', function() {
           const fallback = document.createElement('div');
@@ -2137,6 +2222,19 @@
           fallback.textContent = img.alt || 'DnD Serviços Automotivos';
           img.replaceWith(fallback);
         }, { once: true });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      attachImageFallbacks();
+      loadDynamicServices();
+
+      // Rastrear cliques gerais nos botões do WhatsApp
+      document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', function() {
+          const context = this.getAttribute('class') || 'whatsapp_link';
+          trackLead('Atendimento Geral', context);
+        });
       });
     });
   </script>
