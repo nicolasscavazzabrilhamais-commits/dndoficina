@@ -27,6 +27,7 @@
       --success: #10b981;
       --danger: #ef4444;
       --warning: #f59e0b;
+      --info: #3b82f6;
       --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --radius-sm: 8px;
@@ -114,6 +115,51 @@
       color: #fff;
     }
 
+    /* ABAS */
+    .admin-nav-tabs {
+      background: #14141e;
+      border-bottom: 1px solid var(--dark-border);
+      padding: 0 32px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-tab-btn {
+      padding: 16px 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      background: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab-btn:hover {
+      color: #fff;
+    }
+
+    .nav-tab-btn.active {
+      color: #fff;
+      border-bottom-color: var(--primary);
+    }
+
+    .nav-tab-btn .badge-pill {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+    }
+
+    .nav-tab-btn.active .badge-pill {
+      background: var(--primary);
+      color: #fff;
+    }
+
     /* CONTAINER */
     .admin-container {
       max-width: 1320px;
@@ -121,6 +167,14 @@
       margin: 0 auto;
       padding: 32px 24px;
       flex: 1;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
     }
 
     /* STATS SUMMARY */
@@ -253,12 +307,12 @@
       gap: 8px;
     }
 
-    .vehicle-info .plate-pill {
+    .plate-pill {
       display: inline-block;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.15);
       color: #e5e7eb;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 4px;
       font-size: 11px;
       font-weight: 800;
@@ -326,6 +380,246 @@
     .btn-wa-reply { background: #25d366; color: #fff; }
     .btn-wa-reply:hover { background: #1eb956; }
 
+    /* ========================================================
+       ESTILOS DE CADASTRO NO ADM (CLIENTE -> VEÍCULOS -> SERVIÇOS)
+       ======================================================== */
+    .form-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 36px;
+      right: 36px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .form-section-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 20px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-section-title i {
+      color: var(--primary);
+    }
+
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .admin-form-full {
+      grid-column: 1 / -1;
+    }
+
+    .admin-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #e5e7eb;
+      margin-bottom: 6px;
+    }
+
+    .admin-input, .admin-select, .admin-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      background: #101016;
+      color: #fff;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .admin-input:focus, .admin-select:focus, .admin-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.2);
+    }
+
+    .admin-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-admin-submit {
+      background: var(--primary);
+      color: #fff;
+      padding: 15px 24px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      transition: all 0.2s ease;
+      margin-top: 10px;
+    }
+
+    .btn-admin-submit:hover {
+      background: var(--primary-hover);
+    }
+
+    .admin-feedback {
+      display: none;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 16px;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-feedback.success { display: flex; background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .admin-feedback.error { display: flex; background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    /* ========================================================
+       HISTÓRICO DE CARROS E SERVIÇOS
+       ======================================================== */
+    .search-box-bar {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    .vehicle-history-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .vehicle-header-bar {
+      background: #1c1c28;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .vehicle-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .owner-info {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .services-history-list {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .service-record-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .service-name-tag {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .service-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .service-desc-box {
+      font-size: 13px;
+      color: #d1d5db;
+      margin-top: 6px;
+      line-height: 1.5;
+      width: 100%;
+    }
+
+    .btn-add-service-small {
+      background: rgba(227, 6, 19, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(227, 6, 19, 0.3);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-add-service-small:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
     /* EMPTY STATE */
     .empty-state {
       background: var(--dark-card);
@@ -342,7 +636,7 @@
       margin-bottom: 16px;
     }
 
-    /* TELA DE LOGIN / BLOQUEIO POR SENHA */
+    /* MODAL DE SENHA */
     .login-overlay {
       position: fixed;
       inset: 0;
@@ -460,6 +754,7 @@
       .appointment-card { grid-template-columns: 1fr; gap: 16px; }
       .card-actions { flex-direction: row; width: 100%; }
       .card-actions .btn-action { flex: 1; }
+      .admin-form-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -473,7 +768,7 @@
         <i class="fa-solid fa-lock"></i>
       </div>
       <h2>Acesso Restrito</h2>
-      <p>Digite a senha de administrador da DnD para gerenciar os agendamentos da oficina.</p>
+      <p>Digite a senha de administrador da DnD para acessar o painel de agendamentos e prontuário de veículos.</p>
 
       <form onsubmit="handleLoginSubmit(event)">
         <input type="password" id="adminPassword" class="login-input" placeholder="Digite a senha..." autofocus required>
@@ -496,8 +791,8 @@
     </a>
 
     <div class="header-actions">
-      <button class="btn-header" onclick="loadAppointments()">
-        <i class="fa-solid fa-rotate"></i> Atualizar Lista
+      <button class="btn-header" onclick="refreshCurrentTab()">
+        <i class="fa-solid fa-rotate"></i> Atualizar Dados
       </button>
       <button class="btn-header btn-logout" onclick="logoutAdmin()">
         <i class="fa-solid fa-right-from-bracket"></i> Sair
@@ -508,62 +803,210 @@
     </div>
   </header>
 
+  <!-- ABAS DE NAVEGAÇÃO INTERNA DO ADM -->
+  <nav class="admin-nav-tabs">
+    <button class="nav-tab-btn active" onclick="switchTab('tabAgendamentos', this)">
+      <i class="fa-solid fa-calendar-check"></i> Agendamentos <span class="badge-pill" id="tabCountPending">0</span>
+    </button>
+    <button class="nav-tab-btn" onclick="switchTab('tabNovoCadastro', this)">
+      <i class="fa-solid fa-plus"></i> Novo Cadastro (Cliente & Carro)
+    </button>
+    <button class="nav-tab-btn" onclick="switchTab('tabHistoricoCarros', this)">
+      <i class="fa-solid fa-car-side"></i> Carros & Histórico de Serviços <span class="badge-pill" id="tabCountVehicles">0</span>
+    </button>
+  </nav>
+
   <main class="admin-container">
-    <div style="margin-bottom: 24px;">
-      <h1 style="font-size: 24px; font-weight: 900; margin-bottom: 4px;">Gestão de Agendamentos & Revisões</h1>
-      <p style="color: var(--text-muted); font-size: 14px;">Aceite ou recuse os pedidos recebidos e envie mensagem de confirmação no WhatsApp com 1 clique.</p>
+
+    <!-- ==========================================
+         ABA 1: AGENDAMENTOS (ACEITAR / RECUSAR)
+         ========================================== -->
+    <div id="tabAgendamentos" class="tab-content active">
+      <div style="margin-bottom: 24px;">
+        <h1 style="font-size: 24px; font-weight: 900; margin-bottom: 4px;">Agendamentos & Revisões</h1>
+        <p style="color: var(--text-muted); font-size: 14px;">Aceite ou recuse os pedidos recebidos e confirme com o cliente pelo WhatsApp.</p>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-row">
+        <div class="stat-card pending">
+          <div>
+            <div class="label">Pendentes</div>
+            <div class="value" id="countPending">0</div>
+          </div>
+          <div class="icon"><i class="fa-solid fa-hourglass-half"></i></div>
+        </div>
+
+        <div class="stat-card confirmed">
+          <div>
+            <div class="label">Aceitos</div>
+            <div class="value" id="countConfirmed">0</div>
+          </div>
+          <div class="icon"><i class="fa-solid fa-check"></i></div>
+        </div>
+
+        <div class="stat-card rejected">
+          <div>
+            <div class="label">Recusados</div>
+            <div class="value" id="countRejected">0</div>
+          </div>
+          <div class="icon"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+
+        <div class="stat-card total">
+          <div>
+            <div class="label">Total Geral</div>
+            <div class="value" id="countTotal">0</div>
+          </div>
+          <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="todos" onclick="setFilter('todos', this)">Todos (<span id="btnCountTodos">0</span>)</button>
+        <button class="filter-btn" data-filter="pendente" onclick="setFilter('pendente', this)">Aguardando Resposta (<span id="btnCountPendentes">0</span>)</button>
+        <button class="filter-btn" data-filter="confirmado" onclick="setFilter('confirmado', this)">Aceitos (<span id="btnCountConfirmados">0</span>)</button>
+        <button class="filter-btn" data-filter="cancelado" onclick="setFilter('cancelado', this)">Recusados (<span id="btnCountCancelados">0</span>)</button>
+      </div>
+
+      <!-- LIST -->
+      <div class="appointments-grid" id="appointmentsList">
+        <div class="empty-state">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <h3>Carregando agendamentos...</h3>
+        </div>
+      </div>
     </div>
 
-    <!-- STATS -->
-    <div class="stats-row">
-      <div class="stat-card pending">
-        <div>
-          <div class="label">Pendentes</div>
-          <div class="value" id="countPending">0</div>
+    <!-- ==========================================
+         ABA 2: NOVO CADASTRO (CLIENTE + VEÍCULO + SERVIÇO)
+         ========================================== -->
+    <div id="tabNovoCadastro" class="tab-content">
+      <div class="form-card">
+        <div style="margin-bottom: 20px;">
+          <span style="font-size:12px; font-weight:800; color:var(--primary); text-transform:uppercase; letter-spacing:1px;">Área Restrita da Oficina</span>
+          <h2 style="font-size: 24px; font-weight: 900; color:#fff; margin-top:4px;">Cadastrar Cliente & Veículo</h2>
+          <p style="color: var(--text-muted); font-size: 14px; margin-top:4px;">Cadastre o proprietário, vincule o carro e já registre o primeiro serviço executado.</p>
         </div>
-        <div class="icon"><i class="fa-solid fa-hourglass-half"></i></div>
-      </div>
 
-      <div class="stat-card confirmed">
-        <div>
-          <div class="label">Aceitos</div>
-          <div class="value" id="countConfirmed">0</div>
-        </div>
-        <div class="icon"><i class="fa-solid fa-check"></i></div>
-      </div>
+        <form onsubmit="handleFullCadastro(event)" id="fullCadastroForm">
+          <!-- 1. DADOS DO PROPRIETÁRIO -->
+          <div class="form-section-title">
+            <i class="fa-solid fa-user"></i> 1. Dados do Proprietário (Cliente)
+          </div>
 
-      <div class="stat-card rejected">
-        <div>
-          <div class="label">Recusados</div>
-          <div class="value" id="countRejected">0</div>
-        </div>
-        <div class="icon"><i class="fa-solid fa-xmark"></i></div>
-      </div>
+          <div class="admin-form-grid">
+            <div>
+              <label class="admin-label">Nome Completo do Cliente *</label>
+              <input type="text" id="cadClientName" class="admin-input" placeholder="Ex: Roberto Silva" required>
+            </div>
+            <div>
+              <label class="admin-label">WhatsApp / Telefone *</label>
+              <input type="tel" id="cadClientPhone" class="admin-input" placeholder="Ex: (11) 98765-4321" required>
+            </div>
+          </div>
 
-      <div class="stat-card total">
-        <div>
-          <div class="label">Total Geral</div>
-          <div class="value" id="countTotal">0</div>
-        </div>
-        <div class="icon"><i class="fa-solid fa-calendar-days"></i></div>
+          <!-- 2. DADOS DO VEÍCULO -->
+          <div class="form-section-title" style="margin-top:28px;">
+            <i class="fa-solid fa-car"></i> 2. Dados do Veículo
+          </div>
+
+          <div class="admin-form-grid">
+            <div>
+              <label class="admin-label">Marca *</label>
+              <input type="text" id="cadCarBrand" class="admin-input" placeholder="Ex: Volkswagen, Honda, Audi" required>
+            </div>
+            <div>
+              <label class="admin-label">Modelo & Motorização *</label>
+              <input type="text" id="cadCarModel" class="admin-input" placeholder="Ex: Golf 1.4 TSI, Civic 2.0" required>
+            </div>
+            <div>
+              <label class="admin-label">Placa do Veículo *</label>
+              <input type="text" id="cadCarPlate" class="admin-input" placeholder="Ex: BRA2E19" style="text-transform:uppercase;" required>
+            </div>
+            <div>
+              <label class="admin-label">Ano de Fabricação (Opcional)</label>
+              <input type="number" id="cadCarYear" class="admin-input" placeholder="Ex: 2018">
+            </div>
+          </div>
+
+          <!-- 3. SERVIÇO REALIZADO NO CARRO -->
+          <div class="form-section-title" style="margin-top:28px;">
+            <i class="fa-solid fa-wrench"></i> 3. Serviço Realizado no Carro (Opcional)
+          </div>
+
+          <div class="admin-form-grid">
+            <div>
+              <label class="admin-label">Nome do Serviço</label>
+              <select id="cadServiceName" class="admin-select">
+                <option value="Troca de Óleo & Filtros">Troca de Óleo & Filtros</option>
+                <option value="Diagnóstico Automotivo">Diagnóstico Automotivo</option>
+                <option value="Freios & Pastilhas">Freios & Pastilhas</option>
+                <option value="Suspensão & Amortecedores">Suspensão & Amortecedores</option>
+                <option value="Arrefecimento & Limpeza de Radiador">Arrefecimento & Limpeza de Radiador</option>
+                <option value="Embreagem">Embreagem</option>
+                <option value="Injeção Eletrônica & Velas">Injeção Eletrônica & Velas</option>
+                <option value="Troca de Correia Dentada">Troca de Correia Dentada</option>
+                <option value="Carga de Gás & Ar Condicionado">Carga de Gás & Ar Condicionado</option>
+                <option value="Coding VW / Audi">Coding VW / Audi</option>
+                <option value="Limpeza de Bicos">Limpeza de Bicos</option>
+                <option value="Descarbonização de Válvulas">Descarbonização de Válvulas</option>
+                <option value="Revisão Geral Preventiva">Revisão Geral Preventiva</option>
+                <option value="Outro Serviço">Outro Serviço</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="admin-label">Quilometragem (Km atual do carro)</label>
+              <input type="number" id="cadCarKm" class="admin-input" placeholder="Ex: 85000">
+            </div>
+
+            <div class="admin-form-full">
+              <label class="admin-label">Detalhes do Serviço Realizado</label>
+              <textarea id="cadServiceDesc" class="admin-textarea" placeholder="Descreva peças trocadas, especificações ou detalhes da manutenção..."></textarea>
+            </div>
+
+            <div class="admin-form-full">
+              <button type="submit" id="cadSubmitBtn" class="btn-admin-submit">
+                <i class="fa-solid fa-floppy-disk"></i> Salvar Cliente, Carro & Serviço no Banco
+              </button>
+            </div>
+          </div>
+
+          <div id="cadFeedback" class="admin-feedback"></div>
+        </form>
       </div>
     </div>
 
-    <!-- FILTERS -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-filter="todos" onclick="setFilter('todos', this)">Todos (<span id="btnCountTodos">0</span>)</button>
-      <button class="filter-btn" data-filter="pendente" onclick="setFilter('pendente', this)">Aguardando Resposta (<span id="btnCountPendentes">0</span>)</button>
-      <button class="filter-btn" data-filter="confirmado" onclick="setFilter('confirmado', this)">Aceitos (<span id="btnCountConfirmados">0</span>)</button>
-      <button class="filter-btn" data-filter="cancelado" onclick="setFilter('cancelado', this)">Recusados (<span id="btnCountCancelados">0</span>)</button>
-    </div>
+    <!-- ==========================================
+         ABA 3: CARROS & HISTÓRICO DE SERVIÇOS
+         ========================================== -->
+    <div id="tabHistoricoCarros" class="tab-content">
+      <div style="margin-bottom: 24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h1 style="font-size: 24px; font-weight: 900; margin-bottom: 4px;">Carros & Histórico de Manutenções</h1>
+          <p style="color: var(--text-muted); font-size: 14px;">Consulte cada veículo pelo modelo ou placa e veja todos os serviços que já foram feitos nele.</p>
+        </div>
+        <button class="btn-header" onclick="loadVehiclesAndHistory()">
+          <i class="fa-solid fa-arrows-rotate"></i> Atualizar Prontuário
+        </button>
+      </div>
 
-    <!-- LIST -->
-    <div class="appointments-grid" id="appointmentsList">
-      <div class="empty-state">
-        <i class="fa-solid fa-spinner fa-spin"></i>
-        <h3>Carregando agendamentos...</h3>
+      <!-- BARRA DE BUSCA -->
+      <div class="search-box-bar">
+        <input type="text" id="vehicleSearchInput" class="search-input" placeholder="Buscar por placa (ex: BRA2E19), modelo do carro ou nome do cliente..." oninput="filterVehicles(this.value)">
+      </div>
+
+      <!-- LISTA DE VEÍCULOS E SEUS RESPECTIVOS SERVIÇOS -->
+      <div id="vehiclesHistoryContainer">
+        <div class="empty-state">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <h3>Carregando histórico dos veículos...</h3>
+        </div>
       </div>
     </div>
+
   </main>
 
   <!-- SUPABASE -->
@@ -589,7 +1032,7 @@
         sessionStorage.setItem(SESSION_KEY, 'true');
         document.getElementById('loginOverlay').style.display = 'none';
         errorDiv.style.display = 'none';
-        loadAppointments();
+        initAdminData();
       } else {
         errorDiv.style.display = 'block';
         document.getElementById('adminPassword').value = '';
@@ -600,7 +1043,7 @@
     function checkAuth() {
       if (sessionStorage.getItem(SESSION_KEY) === 'true') {
         document.getElementById('loginOverlay').style.display = 'none';
-        loadAppointments();
+        initAdminData();
       } else {
         document.getElementById('loginOverlay').style.display = 'flex';
       }
@@ -611,32 +1054,48 @@
       window.location.reload();
     }
 
+    // NAVEGAÇÃO DE ABAS
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      btn.classList.add('active');
+
+      if (tabId === 'tabHistoricoCarros') {
+        loadVehiclesAndHistory();
+      }
+    }
+
+    function refreshCurrentTab() {
+      loadAppointments();
+      loadVehiclesAndHistory();
+    }
+
     const SUPABASE_URL = 'https://apzfczbmgderdmbkeyva.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_kF9wJ0eDD51CchH_N-_TAw_V0dYTQEm';
     const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
     let allAppointments = [];
+    let allVehiclesWithHistory = [];
     let currentFilter = 'todos';
 
-    // CARREGAR AGENDAMENTOS
+    function initAdminData() {
+      loadAppointments();
+      loadVehiclesAndHistory();
+    }
+
+    // 1. CARREGAR AGENDAMENTOS
     async function loadAppointments() {
       const container = document.getElementById('appointmentsList');
-      container.innerHTML = `
-        <div class="empty-state">
-          <i class="fa-solid fa-spinner fa-spin"></i>
-          <h3>Atualizando dados do Supabase...</h3>
-        </div>
-      `;
-
       try {
-        if (!supabaseClient) throw new Error('Cliente Supabase não inicializado.');
+        if (!supabaseClient) throw new Error('Supabase indisponível.');
 
         const { data, error } = await supabaseClient
           .from('appointments')
           .select(`
             id,
             preferred_date,
-            preferred_shift,
             notes,
             status,
             created_at,
@@ -650,19 +1109,11 @@
           .order('created_at', { ascending: false });
 
         if (error) throw error;
-
         allAppointments = data || [];
         updateStats();
-        renderList();
+        renderAppointments();
       } catch (err) {
-        console.error('Erro ao buscar agendamentos:', err);
-        container.innerHTML = `
-          <div class="empty-state">
-            <i class="fa-solid fa-triangle-exclamation" style="color:var(--danger)"></i>
-            <h3>Erro ao carregar agendamentos</h3>
-            <p style="font-size:13px; margin-top:8px;">${err.message || 'Verifique sua conexão'}</p>
-          </div>
-        `;
+        console.error('Erro agendamentos:', err);
       }
     }
 
@@ -681,39 +1132,38 @@
       document.getElementById('btnCountPendentes').textContent = pending;
       document.getElementById('btnCountConfirmados').textContent = confirmed;
       document.getElementById('btnCountCancelados').textContent = rejected;
+
+      document.getElementById('tabCountPending').textContent = pending;
     }
 
     function setFilter(filter, btn) {
       currentFilter = filter;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderList();
+      renderAppointments();
     }
 
-    function renderList() {
+    function renderAppointments() {
       const container = document.getElementById('appointmentsList');
-      const filtered = currentFilter === 'todos' 
-        ? allAppointments 
-        : allAppointments.filter(a => a.status === currentFilter);
+      const filtered = currentFilter === 'todos' ? allAppointments : allAppointments.filter(a => a.status === currentFilter);
 
       if (filtered.length === 0) {
         container.innerHTML = `
           <div class="empty-state">
             <i class="fa-solid fa-calendar-xmark"></i>
             <h3>Nenhum agendamento encontrado</h3>
-            <p style="font-size:13px; margin-top:6px;">Quando houver solicitações de revisão, elas aparecerão aqui instantaneamente.</p>
           </div>
         `;
         return;
       }
 
       container.innerHTML = filtered.map(app => {
-        const cust = app.customers || { name: 'Cliente sem nome', phone: 'Não informado', vehicle_model: 'Veículo não informado', vehicle_plate: '' };
+        const cust = app.customers || { name: 'Cliente', phone: '-', vehicle_model: 'Veículo', vehicle_plate: '' };
         const cleanPhone = (cust.phone || '').replace(/\D/g, '');
         const formattedDate = app.preferred_date ? app.preferred_date.split('-').reverse().join('/') : 'A combinar';
 
-        const msgAceite = encodeURIComponent(`Olá ${cust.name}! Aqui é da DnD Serviços Automotivos. Confirmamos o seu agendamento para o dia ${formattedDate} (${cust.vehicle_model}). Estamos aguardando você!`);
-        const msgRecusa = encodeURIComponent(`Olá ${cust.name}! Aqui é da DnD Serviços Automotivos. Vimos sua solicitação para o dia ${formattedDate}, mas infelizmente nossa agenda está lotada nesse dia. Poderíamos combinar uma nova data?`);
+        const msgAceite = encodeURIComponent(`Olá ${cust.name}! Aqui é da DnD Serviços Automotivos. Confirmamos seu agendamento para o dia ${formattedDate} (${cust.vehicle_model}). Estamos aguardando você!`);
+        const msgRecusa = encodeURIComponent(`Olá ${cust.name}! Aqui é da DnD Serviços Automotivos. Vimos sua solicitação para ${formattedDate}, mas infelizmente nossa agenda está lotada nessa data. Poderíamos combinar um novo horário?`);
 
         return `
           <div class="appointment-card status-${app.status}">
@@ -733,36 +1183,29 @@
             </div>
 
             <div class="schedule-info">
-              <div class="date">
-                <i class="fa-solid fa-calendar-day"></i> ${formattedDate}
-              </div>
-              <div class="notes">
-                ${escapeHtml(app.notes || 'Sem observações adicionais')}
-              </div>
+              <div class="date"><i class="fa-solid fa-calendar-day"></i> ${formattedDate}</div>
+              <div class="notes">${escapeHtml(app.notes || 'Sem observações')}</div>
             </div>
 
             <div class="card-actions">
               ${app.status === 'pendente' ? `
-                <button class="btn-action btn-accept" onclick="updateStatus('${app.id}', 'confirmado')">
+                <button class="btn-action btn-accept" onclick="updateAppointmentStatus('${app.id}', 'confirmado')">
                   <i class="fa-solid fa-check"></i> Aceitar
                 </button>
-                <button class="btn-action btn-reject" onclick="updateStatus('${app.id}', 'cancelado')">
+                <button class="btn-action btn-reject" onclick="updateAppointmentStatus('${app.id}', 'cancelado')">
                   <i class="fa-solid fa-xmark"></i> Recusar
                 </button>
               ` : app.status === 'confirmado' ? `
                 <a class="btn-action btn-wa-reply" href="https://wa.me/55${cleanPhone}?text=${msgAceite}" target="_blank">
-                  <i class="fa-brands fa-whatsapp"></i> Enviar Confirmação
+                  <i class="fa-brands fa-whatsapp"></i> Confirmar WhatsApp
                 </a>
-                <button class="btn-action btn-reject" onclick="updateStatus('${app.id}', 'cancelado')">
+                <button class="btn-action btn-reject" onclick="updateAppointmentStatus('${app.id}', 'cancelado')">
                   <i class="fa-solid fa-ban"></i> Cancelar
                 </button>
               ` : `
                 <a class="btn-action btn-wa-reply" href="https://wa.me/55${cleanPhone}?text=${msgRecusa}" target="_blank">
                   <i class="fa-brands fa-whatsapp"></i> Reagendar WhatsApp
                 </a>
-                <button class="btn-action btn-accept" onclick="updateStatus('${app.id}', 'confirmado')">
-                  <i class="fa-solid fa-rotate-left"></i> Reativar
-                </button>
               `}
             </div>
           </div>
@@ -770,24 +1213,280 @@
       }).join('');
     }
 
-    async function updateStatus(id, newStatus) {
+    async function updateAppointmentStatus(id, newStatus) {
       try {
-        const { error } = await supabaseClient
-          .from('appointments')
-          .update({ status: newStatus })
-          .eq('id', id);
+        const { error } = await supabaseClient.from('appointments').update({ status: newStatus }).eq('id', id);
+        if (error) throw error;
+        const item = allAppointments.find(a => a.id === id);
+        if (item) item.status = newStatus;
+        updateStats();
+        renderAppointments();
+      } catch (err) {
+        alert('Erro ao atualizar status.');
+      }
+    }
+
+    // 2. CADASTRO DE CLIENTE + VEÍCULO + SERVIÇO
+    async function handleFullCadastro(e) {
+      e.preventDefault();
+      const btn = document.getElementById('cadSubmitBtn');
+      const feedback = document.getElementById('cadFeedback');
+
+      const clientName = document.getElementById('cadClientName').value.trim();
+      const clientPhone = document.getElementById('cadClientPhone').value.trim();
+      const carBrand = document.getElementById('cadCarBrand').value.trim();
+      const carModel = document.getElementById('cadCarModel').value.trim();
+      const carPlate = document.getElementById('cadCarPlate').value.trim().toUpperCase();
+      const carYear = document.getElementById('cadCarYear').value;
+      const serviceName = document.getElementById('cadServiceName').value;
+      const carKm = document.getElementById('cadCarKm').value;
+      const serviceDesc = document.getElementById('cadServiceDesc').value.trim();
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Gravando registros...';
+
+      try {
+        // Passo 1: Salva o Cliente em public.customers
+        const { data: custData, error: custErr } = await supabaseClient
+          .from('customers')
+          .insert([{
+            name: clientName,
+            phone: clientPhone,
+            vehicle_model: `${carBrand} ${carModel}`,
+            vehicle_plate: carPlate
+          }])
+          .select('id')
+          .single();
+
+        if (custErr) throw custErr;
+
+        // Passo 2: Salva o Veículo em public.vehicles vinculado ao cliente (1:N)
+        const { data: vehData, error: vehErr } = await supabaseClient
+          .from('vehicles')
+          .insert([{
+            customer_id: custData.id,
+            brand: carBrand,
+            model: carModel,
+            plate: carPlate,
+            year: carYear ? parseInt(carYear) : null
+          }])
+          .select('id')
+          .single();
+
+        if (vehErr) throw vehErr;
+
+        // Passo 3: Salva o Serviço Executado em public.service_orders vinculado ao veículo (1:N)
+        if (serviceName) {
+          const { error: srvErr } = await supabaseClient
+            .from('service_orders')
+            .insert([{
+              vehicle_id: vehData.id,
+              service_name: serviceName,
+              description: serviceDesc || null,
+              mileage: carKm ? parseInt(carKm) : null,
+              status: 'concluido'
+            }]);
+
+          if (srvErr) throw srvErr;
+        }
+
+        feedback.className = 'admin-feedback success';
+        feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> Sucesso! Cliente <strong>${escapeHtml(clientName)}</strong>, veículo <strong>${escapeHtml(carModel)} (${escapeHtml(carPlate)})</strong> e serviço gravados no banco!`;
+        feedback.style.display = 'flex';
+
+        document.getElementById('fullCadastroForm').reset();
+        loadVehiclesAndHistory();
+
+      } catch (err) {
+        console.error('Erro no cadastro:', err);
+        feedback.className = 'admin-feedback error';
+        feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Erro ao cadastrar. Verifique os campos e tente novamente.`;
+        feedback.style.display = 'flex';
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Salvar Cliente, Carro & Serviço no Banco';
+      }
+    }
+
+    // 3. CARREGAR VEÍCULOS E O HISTÓRICO DE SERVIÇOS DE CADA CARRO
+    async function loadVehiclesAndHistory() {
+      const container = document.getElementById('vehiclesHistoryContainer');
+      container.innerHTML = `
+        <div class="empty-state">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <h3>Consultando carros e histórico no Supabase...</h3>
+        </div>
+      `;
+
+      try {
+        if (!supabaseClient) throw new Error('Cliente Supabase não inicializado.');
+
+        // Busca Veículos, o Proprietário (customer) e a lista de Serviços Feitos (service_orders)
+        const { data: vehicles, error } = await supabaseClient
+          .from('vehicles')
+          .select(`
+            id,
+            brand,
+            model,
+            plate,
+            year,
+            created_at,
+            customers (
+              name,
+              phone
+            ),
+            service_orders (
+              id,
+              service_name,
+              description,
+              mileage,
+              performed_at,
+              status
+            )
+          `)
+          .order('created_at', { ascending: false });
 
         if (error) throw error;
 
-        const item = allAppointments.find(a => a.id === id);
-        if (item) item.status = newStatus;
+        allVehiclesWithHistory = vehicles || [];
+        document.getElementById('tabCountVehicles').textContent = allVehiclesWithHistory.length;
+        renderVehiclesList(allVehiclesWithHistory);
 
-        updateStats();
-        renderList();
       } catch (err) {
-        console.error('Erro ao atualizar status:', err);
-        alert('Não foi possível alterar o status.');
+        console.error('Erro ao buscar histórico de veículos:', err);
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-triangle-exclamation" style="color:var(--danger)"></i>
+            <h3>Erro ao carregar prontuário dos veículos</h3>
+            <p style="font-size:13px; margin-top:8px;">${err.message || 'Verifique a conexão'}</p>
+          </div>
+        `;
       }
+    }
+
+    function renderVehiclesList(list) {
+      const container = document.getElementById('vehiclesHistoryContainer');
+
+      if (!list || list.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-car-side"></i>
+            <h3>Nenhum veículo cadastrado ainda</h3>
+            <p style="font-size:13px; margin-top:8px;">Cadastre seu primeiro cliente e carro na aba <strong>"Novo Cadastro"</strong>.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(veh => {
+        const cust = veh.customers || { name: 'Cliente não informado', phone: '' };
+        const cleanPhone = (cust.phone || '').replace(/\D/g, '');
+        const services = veh.service_orders || [];
+
+        return `
+          <div class="vehicle-history-card">
+            <div class="vehicle-header-bar">
+              <div>
+                <div class="vehicle-title">
+                  <i class="fa-solid fa-car" style="color:var(--primary);"></i>
+                  <span>${escapeHtml(veh.brand)} ${escapeHtml(veh.model)}</span>
+                  <span class="plate-pill">${escapeHtml(veh.plate)}</span>
+                  ${veh.year ? `<span style="font-size:12px; color:var(--text-muted); font-weight:600;">(${veh.year})</span>` : ''}
+                </div>
+                <div class="owner-info" style="margin-top:6px;">
+                  <span><i class="fa-solid fa-user"></i> Proprietário: <strong>${escapeHtml(cust.name)}</strong></span>
+                  ${cust.phone ? `<span><i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> ${escapeHtml(cust.phone)}</span>` : ''}
+                </div>
+              </div>
+
+              <div>
+                <button class="btn-add-service-small" onclick="promptAddService('${veh.id}', '${escapeHtml(veh.model)}', '${escapeHtml(veh.plate)}')">
+                  <i class="fa-solid fa-plus"></i> Novo Serviço neste Carro
+                </button>
+              </div>
+            </div>
+
+            <!-- HISTÓRICO DE SERVIÇOS FEITOS NESTE CARRO -->
+            <div class="services-history-list">
+              <div style="font-size:12px; font-weight:800; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">
+                <i class="fa-solid fa-clipboard-check"></i> Prontuário de Manutenções (${services.length})
+              </div>
+
+              ${services.length === 0 ? `
+                <div style="font-size:13px; color:var(--text-muted); padding:10px 0;">
+                  Nenhum serviço registrado para este veículo ainda.
+                </div>
+              ` : services.map(srv => {
+                const dateStr = srv.performed_at ? srv.performed_at.split('-').reverse().join('/') : '-';
+                return `
+                  <div class="service-record-item">
+                    <div>
+                      <div class="service-name-tag">
+                        <i class="fa-solid fa-wrench" style="color:var(--primary); font-size:13px;"></i>
+                        <span>${escapeHtml(srv.service_name)}</span>
+                      </div>
+                      ${srv.description ? `<div class="service-desc-box">${escapeHtml(srv.description)}</div>` : ''}
+                    </div>
+
+                    <div class="service-meta">
+                      ${srv.mileage ? `<span><i class="fa-solid fa-gauge-high"></i> ${srv.mileage.toLocaleString('pt-BR')} km</span>` : ''}
+                      <span><i class="fa-solid fa-calendar"></i> ${dateStr}</span>
+                      <span class="badge-status confirmado" style="margin-bottom:0; font-size:10px;">${srv.status.toUpperCase()}</span>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ADICIONAR NOVO SERVIÇO EM UM CARRO EXISTENTE
+    async function promptAddService(vehicleId, carModel, plate) {
+      const srvName = prompt(`Qual serviço foi realizado no ${carModel} (${plate})?\n(Ex: Troca de Pastilhas de Freio, Troca de Óleo, etc.)`);
+      if (!srvName) return;
+
+      const km = prompt("Qual a quilometragem atual do carro? (Ex: 92000)");
+      const desc = prompt("Observações ou detalhes das peças trocadas (Opcional):");
+
+      try {
+        const { error } = await supabaseClient
+          .from('service_orders')
+          .insert([{
+            vehicle_id: vehicleId,
+            service_name: srvName,
+            description: desc || null,
+            mileage: km ? parseInt(km) : null,
+            status: 'concluido'
+          }]);
+
+        if (error) throw error;
+        alert(`Serviço "${srvName}" registrado com sucesso no carro ${plate}!`);
+        loadVehiclesAndHistory();
+      } catch (err) {
+        console.error('Erro ao adicionar serviço:', err);
+        alert('Erro ao salvar serviço no banco.');
+      }
+    }
+
+    // BUSCA POR PLACA OU MODELO
+    function filterVehicles(query) {
+      const q = query.toLowerCase().trim();
+      if (!q) {
+        renderVehiclesList(allVehiclesWithHistory);
+        return;
+      }
+
+      const filtered = allVehiclesWithHistory.filter(v => {
+        const plate = (v.plate || '').toLowerCase();
+        const model = (v.model || '').toLowerCase();
+        const brand = (v.brand || '').toLowerCase();
+        const custName = (v.customers?.name || '').toLowerCase();
+        return plate.includes(q) || model.includes(q) || brand.includes(q) || custName.includes(q);
+      });
+
+      renderVehiclesList(filtered);
     }
 
     function escapeHtml(str) {
