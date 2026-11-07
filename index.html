@@ -1384,6 +1384,222 @@
         text-align: center;
       }
     }
+
+    /* ==========================================================================
+       SEÇÃO DE AGENDAMENTO ONLINE (INDEX)
+       ========================================================================== */
+    .booking-section {
+      padding: 90px 24px;
+      background: radial-gradient(circle at 50% 0%, #171720 0%, #0b0b0e 100%);
+      color: #ffffff;
+      position: relative;
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .booking-container {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .booking-header .section-tag {
+      background: rgba(227, 6, 19, 0.15);
+      border: 1px solid rgba(227, 6, 19, 0.35);
+      color: #ff4d58;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+
+    .booking-header .section-title {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .booking-header .section-title span {
+      color: var(--primary);
+    }
+
+    .booking-header .section-subtitle {
+      font-size: 16px;
+      color: #9ca3af;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .booking-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .booking-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 36px;
+      right: 36px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary) 0%, #ff4d58 100%);
+      border-radius: 3px;
+    }
+
+    .booking-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .booking-form-full {
+      grid-column: 1 / -1;
+    }
+
+    .booking-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .booking-form-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .booking-form-group label i {
+      color: var(--primary);
+      font-size: 13px;
+    }
+
+    .booking-form-control {
+      width: 100%;
+      padding: 13px 16px;
+      font-family: inherit;
+      font-size: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-sm);
+      background: #101016;
+      color: #ffffff;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .booking-form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.2);
+      background: #14141c;
+    }
+
+    .booking-form-control::placeholder {
+      color: #6b7280;
+    }
+
+    .booking-form-control option {
+      background: #14141c;
+      color: #ffffff;
+    }
+
+    .booking-footer {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .booking-disclaimer {
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .booking-disclaimer i {
+      color: #25d366;
+    }
+
+    .booking-success-box {
+      text-align: center;
+      padding: 30px 16px;
+    }
+
+    .booking-success-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(37, 211, 102, 0.15);
+      border: 2px solid rgba(37, 211, 102, 0.4);
+      color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin: 0 auto 20px;
+    }
+
+    .booking-success-box h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .booking-success-box p {
+      color: #d1d5db;
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 580px;
+      margin: 0 auto 24px;
+    }
+
+    .booking-success-box strong {
+      color: #ffffff;
+    }
+
+    .booking-success-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .booking-form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .booking-card {
+        padding: 28px 20px;
+      }
+      .booking-header .section-title {
+        font-size: 28px;
+      }
+    }
   </style>
 </head>
 
@@ -1415,6 +1631,7 @@
 
       <nav class="nav-links">
         <a href="#servicos">Serviços</a>
+        <a href="#agendamento">Agendar Revisão</a>
         <a href="#oficinas">Localização</a>
         <a href="#sobre">Sobre Nós</a>
         <a href="#faq">Dúvidas</a>
@@ -1450,14 +1667,14 @@
         </p>
 
         <div class="hero-actions">
+          <a href="#agendamento" class="btn-primary">
+            <i class="fa-solid fa-calendar-check"></i> Solicitar Agendamento
+          </a>
           <a href="https://wa.me/5511966702230?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação%20para%20o%20meu%20carro."
-             class="btn-primary"
+             class="btn-secondary"
              target="_blank"
              rel="noopener noreferrer">
-            <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
-          </a>
-          <a href="#servicos" class="btn-secondary">
-            Ver Todos os Serviços <i class="fa-solid fa-arrow-down"></i>
+            <i class="fa-brands fa-whatsapp"></i> Falar no WhatsApp
           </a>
         </div>
 
@@ -1794,6 +2011,116 @@
     </div>
   </section>
 
+  <!-- AGENDAMENTO ONLINE -->
+  <section class="booking-section" id="agendamento">
+    <div class="booking-container">
+      <div class="booking-header">
+        <span class="section-tag"><i class="fa-solid fa-calendar-check"></i> Agendamento Online</span>
+        <h2 class="section-title">Solicite seu <span>Agendamento</span></h2>
+        <p class="section-subtitle">
+          Escolha o melhor dia para trazer seu veículo. Nossa equipe técnica receberá a solicitação e confirmará com você pelo WhatsApp.
+        </p>
+      </div>
+
+      <div class="booking-card">
+        <form id="appointmentForm" onsubmit="handleAppointmentRequest(event)">
+          <div class="booking-form-grid">
+            <!-- Nome -->
+            <div class="booking-form-group">
+              <label for="bkgName"><i class="fa-solid fa-user"></i> Seu Nome Completo *</label>
+              <input type="text" id="bkgName" class="booking-form-control" placeholder="Ex: Roberto Silva" required>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="booking-form-group">
+              <label for="bkgPhone"><i class="fa-brands fa-whatsapp"></i> WhatsApp / Celular com DDD *</label>
+              <input type="tel" id="bkgPhone" class="booking-form-control" placeholder="(11) 99999-9999" required maxlength="15" oninput="maskPhone(this)">
+            </div>
+
+            <!-- Veículo (Marca / Modelo) -->
+            <div class="booking-form-group">
+              <label for="bkgVehicle"><i class="fa-solid fa-car"></i> Veículo (Marca e Modelo) *</label>
+              <input type="text" id="bkgVehicle" class="booking-form-control" placeholder="Ex: VW Golf 1.4 TSI, Onix 1.0, Civic..." required>
+            </div>
+
+            <!-- Placa (Opcional) -->
+            <div class="booking-form-group">
+              <label for="bkgPlate"><i class="fa-solid fa-id-card"></i> Placa do Carro (Opcional)</label>
+              <input type="text" id="bkgPlate" class="booking-form-control" placeholder="Ex: BRA2E19" maxlength="8" style="text-transform: uppercase;">
+            </div>
+
+            <!-- Serviço Desejado -->
+            <div class="booking-form-group">
+              <label for="bkgService"><i class="fa-solid fa-wrench"></i> Serviço Principal *</label>
+              <select id="bkgService" class="booking-form-control" required>
+                <option value="">Selecione o serviço...</option>
+                <option value="Revisão Preventiva Geral">Revisão Preventiva Geral</option>
+                <option value="Diagnóstico Computadorizado / Scanner">Diagnóstico Computadorizado / Scanner</option>
+                <option value="Sistema de Freios (Pastilhas / Discos)">Sistema de Freios (Pastilhas / Discos)</option>
+                <option value="Suspensão e Amortecedores">Suspensão e Amortecedores</option>
+                <option value="Sistema de Arrefecimento / Troca de Água">Sistema de Arrefecimento / Troca de Água</option>
+                <option value="Troca de Óleo e Filtros">Troca de Óleo e Filtros</option>
+                <option value="Injeção Eletrônica e Velas">Injeção Eletrônica e Velas</option>
+                <option value="Coding & Eletrônica Embarcada (VW / Audi)">Coding & Eletrônica Embarcada (VW / Audi)</option>
+                <option value="Embreagem e Câmbio">Embreagem e Câmbio</option>
+                <option value="Descarbonização">Descarbonização</option>
+                <option value="Outro / Barulhos e Sintomas Estranhos">Outro / Barulhos e Sintomas Estranhos</option>
+              </select>
+            </div>
+
+            <!-- Data Preferencial -->
+            <div class="booking-form-group">
+              <label for="bkgDate"><i class="fa-solid fa-calendar-day"></i> Data Preferencial *</label>
+              <input type="date" id="bkgDate" class="booking-form-control" required>
+            </div>
+
+            <!-- Período / Turno -->
+            <div class="booking-form-group booking-form-full">
+              <label for="bkgShift"><i class="fa-solid fa-clock"></i> Período do Dia de Preferência *</label>
+              <select id="bkgShift" class="booking-form-control" required>
+                <option value="manha">Manhã (08h às 12h)</option>
+                <option value="tarde">Tarde (13h às 17h30)</option>
+                <option value="integral">O dia todo (deixar pela manhã e retirar à tarde)</option>
+              </select>
+            </div>
+
+            <!-- Sintomas / Observações -->
+            <div class="booking-form-group booking-form-full">
+              <label for="bkgNotes"><i class="fa-solid fa-comment-dots"></i> Descreva o que o carro está apresentando (Opcional)</label>
+              <textarea id="bkgNotes" class="booking-form-control" rows="3" placeholder="Ex: Acendeu luz de injeção, barulho metálico na roda dianteira ao frear, revisão de 60.000 km..."></textarea>
+            </div>
+          </div>
+
+          <div class="booking-footer">
+            <button type="submit" id="bkgSubmitBtn" class="btn-primary" style="padding: 16px 36px; font-size: 16px;">
+              <i class="fa-solid fa-paper-plane"></i> Enviar Solicitação de Agendamento
+            </button>
+            <p class="booking-disclaimer">
+              <i class="fa-solid fa-shield-halved"></i> Seus dados estão seguros e serão utilizados exclusivamente pela DnD para o agendamento.
+            </p>
+          </div>
+        </form>
+
+        <!-- Mensagem de Sucesso (após envio) -->
+        <div id="bookingSuccessBox" class="booking-success-box" style="display: none;">
+          <div class="booking-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>Solicitação Enviada com Sucesso!</h3>
+          <p id="bookingSuccessMessage">
+            Recebemos seu pedido de agendamento. Nossa equipe da DnD entrará em contato pelo seu WhatsApp para confirmar a data e o horário.
+          </p>
+          <div class="booking-success-actions">
+            <a id="bookingFastWaBtn" href="#" class="btn-nav-whatsapp" target="_blank" rel="noopener noreferrer">
+              <i class="fa-brands fa-whatsapp"></i> Acelerar confirmação no WhatsApp
+            </a>
+            <button type="button" class="btn-secondary" onclick="resetBookingForm()" style="color: #ffffff; border-color: rgba(255,255,255,0.25);">
+              <i class="fa-solid fa-rotate-left"></i> Fazer novo agendamento
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- OFICINA / LOCALIZAÇÃO -->
   <section class="workshop-section" id="oficinas">
     <div class="section-wrap" style="padding-top:0; padding-bottom:0;">
@@ -2044,6 +2371,7 @@
         <h3>Navegação</h3>
         <ul class="footer-links">
           <li><a href="#servicos"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Serviços</a></li>
+          <li><a href="#agendamento"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Agendar Revisão</a></li>
           <li><a href="#oficinas"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Onde Estamos</a></li>
           <li><a href="#sobre"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Sobre a Oficina</a></li>
           <li><a href="#faq"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Dúvidas Frequentes</a></li>
@@ -2228,20 +2556,139 @@
       });
     }
 
+    // Máscara de telefone/WhatsApp
+    function maskPhone(input) {
+      let v = input.value.replace(/\D/g, '');
+      if (v.length > 11) v = v.substring(0, 11);
+      if (v.length > 6) {
+        input.value = `(${v.substring(0, 2)}) ${v.substring(2, 7)}-${v.substring(7)}`;
+      } else if (v.length > 2) {
+        input.value = `(${v.substring(0, 2)}) ${v.substring(2)}`;
+      } else if (v.length > 0) {
+        input.value = `(${v}`;
+      } else {
+        input.value = '';
+      }
+    }
+
+    // Envio do Pedido de Agendamento integrado ao Supabase e ao Painel ADM
+    async function handleAppointmentRequest(e) {
+      e.preventDefault();
+      const btn = document.getElementById('bkgSubmitBtn');
+      const originalHtml = btn.innerHTML;
+
+      const name = document.getElementById('bkgName').value.trim();
+      const phone = document.getElementById('bkgPhone').value.trim();
+      const vehicle = document.getElementById('bkgVehicle').value.trim();
+      const plate = document.getElementById('bkgPlate').value.trim().toUpperCase();
+      const service = document.getElementById('bkgService').value;
+      const date = document.getElementById('bkgDate').value;
+      const shift = document.getElementById('bkgShift').value;
+      const notes = document.getElementById('bkgNotes').value.trim();
+
+      if (!name || !phone || !vehicle || !service || !date) {
+        alert('Por favor, preencha todos os campos obrigatórios (*).');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Registrando agendamento...';
+
+      try {
+        let customerId = null;
+
+        if (supabaseClient) {
+          // 1. Cadastra cliente em public.customers
+          const { data: custData, error: custErr } = await supabaseClient
+            .from('customers')
+            .insert([{
+              name: name,
+              phone: phone,
+              vehicle_model: vehicle,
+              vehicle_plate: plate || null
+            }])
+            .select('id')
+            .single();
+
+          if (custErr) {
+            console.warn('Registro cliente aviso:', custErr);
+          } else if (custData) {
+            customerId = custData.id;
+          }
+
+          // 2. Insere agendamento em public.appointments (aparece no painel ADM)
+          const shiftText = shift === 'manha' ? 'Manhã (08h às 12h)' : shift === 'tarde' ? 'Tarde (13h às 17h30)' : 'Integral (dia todo)';
+          const notesFull = [
+            `Serviço pretendido: ${service}`,
+            `Turno preferido: ${shiftText}`,
+            notes ? `Observações: ${notes}` : ''
+          ].filter(Boolean).join(' | ');
+
+          const { error: appErr } = await supabaseClient
+            .from('appointments')
+            .insert([{
+              customer_id: customerId,
+              preferred_date: date,
+              preferred_shift: shift,
+              notes: notesFull,
+              status: 'pendente'
+            }]);
+
+          if (appErr) throw appErr;
+
+          // 3. Registra em leads
+          await supabaseClient.from('leads').insert([{
+            name: name,
+            phone: phone,
+            interested_service: service,
+            message: `Solicitação de agendamento para ${date} (${shiftText}). Veículo: ${vehicle}. Observações: ${notes || 'Nenhuma'}`,
+            origin: 'site_agendamento'
+          }]);
+        }
+
+        // Sucesso visual no site
+        document.getElementById('appointmentForm').style.display = 'none';
+        const successBox = document.getElementById('bookingSuccessBox');
+        successBox.style.display = 'block';
+
+        const formattedDate = date.split('-').reverse().join('/');
+        const waShiftText = shift === 'manha' ? 'na parte da Manhã' : shift === 'tarde' ? 'na parte da Tarde' : 'em período Integral';
+
+        document.getElementById('bookingSuccessMessage').innerHTML = `
+          Olá <strong>${escapeHtml(name)}</strong>! Recebemos sua solicitação para o veículo <strong>${escapeHtml(vehicle)}</strong> no dia <strong>${formattedDate}</strong> (${waShiftText}).<br>
+          Nossa equipe da DnD entrará em contato em breve pelo seu WhatsApp no número <strong>${escapeHtml(phone)}</strong> para confirmar o horário!
+        `;
+
+        const fastWaBtn = document.getElementById('bookingFastWaBtn');
+        const waText = encodeURIComponent(`Olá equipe DnD! Acabei de enviar um pedido de agendamento pelo site para o meu veículo ${vehicle} (${plate ? 'Placa ' + plate : ''}) no dia ${formattedDate}. Meu nome é ${name}.`);
+        fastWaBtn.href = `https://wa.me/5511966702230?text=${waText}`;
+
+      } catch (err) {
+        console.error('Erro ao agendar:', err);
+        alert('Recebemos sua intenção, mas você também pode confirmar diretamente com a oficina pelo WhatsApp!');
+        window.open(`https://wa.me/5511966702230?text=${encodeURIComponent(`Olá! Tentei solicitar agendamento no site para o veículo ${vehicle} no dia ${date}. Meu nome é ${name}.`)}`, '_blank');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+      }
+    }
+
+    function resetBookingForm() {
+      document.getElementById('appointmentForm').reset();
+      document.getElementById('appointmentForm').style.display = 'block';
+      document.getElementById('bookingSuccessBox').style.display = 'none';
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       attachImageFallbacks();
       loadDynamicServices();
 
-      // Rastrear cliques gerais nos botões do WhatsApp
-      document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-        link.addEventListener('click', function() {
-          const context = this.getAttribute('class') || 'whatsapp_link';
-          trackLead('Atendimento Geral', context);
-        });
-      });
-    });
-      attachImageFallbacks();
-      loadDynamicServices();
+      // Configura data mínima para o agendamento (hoje)
+      const bkgDate = document.getElementById('bkgDate');
+      if (bkgDate) {
+        const today = new Date().toISOString().split('T')[0];
+        bkgDate.min = today;
+      }
 
       // Rastrear cliques gerais nos botões do WhatsApp
       document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
