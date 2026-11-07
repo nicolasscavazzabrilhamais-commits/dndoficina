@@ -1,1205 +1,2139 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>DnD Serviços Automotivos</title>
-
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-html{scroll-behavior:smooth}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#fff;
-  color:#222;
-}
-
-a{text-decoration:none;color:inherit}
-
-:root{
-  --red:#e30613;
-  --dark:#101010;
-  --gray:#f1f1f1;
-}
-
-/* TOPO */
-.top{
-  background:#0b0b0b;
-  color:#fff;
-  min-height:74px;
-  padding:0 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:99;
-  border-bottom:1px solid #222;
-}
-
-.logo{
-  font-size:29px;
-  font-weight:900;
-  letter-spacing:-1px;
-}
-
-.logo .d-white{
-  color:#fff!important;
-  -webkit-text-stroke:.7px #000;
-  text-shadow:0 1px 2px rgba(0,0,0,.55);
-}
-
-.logo .n-red{
-  color:#e30613!important;
-  -webkit-text-stroke:.7px #000;
-  text-shadow:0 1px 2px rgba(0,0,0,.55);
-}
-
-.menu{
-  display:flex;
-  gap:30px;
-  font-size:14px;
-  font-weight:700;
-}
-
-.menu a:hover{color:var(--red)}
-
-.client{
-  background:var(--red);
-  padding:12px 18px;
-  border-radius:3px;
-  font-size:12px;
-}
-
-/* HERO */
-.hero{
-  min-height:560px;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.25)),
-    url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1800&q=85");
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  padding:80px 8%;
-  color:#fff;
-}
-
-.hero-box{max-width:650px}
-
-.hero small{
-  font-size:13px;
-  letter-spacing:3px;
-  color:#ddd;
-  font-weight:bold;
-}
-
-.hero h1{
-  font-size:64px;
-  line-height:.98;
-  margin:18px 0;
-  text-transform:uppercase;
-}
-
-.hero h1 span{color:var(--red)}
-
-.hero p{
-  font-size:18px;
-  line-height:1.6;
-  color:#eee;
-  max-width:570px;
-}
-
-.red-btn{
-  display:inline-block;
-  background:var(--red);
-  color:#fff;
-  padding:15px 24px;
-  margin-top:28px;
-  font-weight:bold;
-  border-radius:2px;
-}
-
-.red-btn:hover{background:#b9000b}
-
-/* SEÇÕES */
-.block{padding:75px 7%}
-
-.title{
-  text-align:center;
-  margin-bottom:45px;
-}
-
-.title h2{
-  font-size:38px;
-  text-transform:uppercase;
-}
-
-.title h2 span{color:var(--red)}
-
-.title p{
-  margin-top:10px;
-  color:#777;
-}
-
-/* SERVIÇOS */
-.services{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid #ddd;
-  border-left:1px solid #ddd;
-}
-
-.service{
-  background:#fff;
-  min-height:190px;
-  padding:28px 24px;
-  border-right:1px solid #ddd;
-  border-bottom:1px solid #ddd;
-  transition:.2s;
-}
-
-.service:hover{
-  background:#f8f8f8;
-  transform:translateY(-3px);
-}
-
-.service-photo{
-  position:relative;
-  overflow:hidden;
-  padding:0;
-  cursor:pointer;
-  min-height:245px;
-}
-
-.service-photo>img{
-  width:100%;
-  height:145px;
-  object-fit:cover;
-  display:block;
-  transition:.35s;
-}
-
-.service-photo:hover>img{transform:scale(1.06)}
-
-.service-photo .service-info{padding:16px 20px}
-
-.service-photo .ico{
-  font-size:25px;
-  margin:0 0 7px;
-}
-
-.service-photo h3{
-  margin-bottom:4px;
-  font-size:17px;
-  text-transform:uppercase;
-}
-
-.service-photo p{
-  font-size:12px;
-  color:#e30613!important;
-  font-weight:700;
-}
-
-/* IMAGEM QUE NÃO CARREGAR */
-.image-fallback{
-  width:100%;
-  height:145px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#171717;
-  color:#fff;
-  font-weight:800;
-  text-transform:uppercase;
-  text-align:center;
-  padding:15px;
-}
-
-/* OFICINA */
-.find{
-  background:#111;
-  color:#fff;
-  padding:80px 7%;
-}
-
-.find .title p{color:#aaa}
-
-.workshops{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-
-.shop{
-  background:#fff;
-  color:#222;
-  padding:24px;
-  border-left:5px solid var(--red);
-  min-height:150px;
-}
-
-.shop small{
-  color:#e30613;
-  font-weight:bold;
-  text-transform:uppercase;
-}
-
-.shop h3{
-  margin:8px 0;
-  font-size:20px;
-}
-
-.shop p{
-  color:#666;
-  line-height:1.55;
-  font-size:14px;
-}
-
-.map{
-  display:inline-block;
-  margin-top:15px;
-  color:var(--red);
-  font-weight:bold;
-  font-size:13px;
-}
-
-/* SOBRE */
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:55px;
-  align-items:center;
-}
-
-.about img{
-  width:100%;
-  height:400px;
-  object-fit:cover;
-}
-
-.about h2{
-  font-size:40px;
-  text-transform:uppercase;
-  margin-bottom:18px;
-}
-
-.about h2 span{color:var(--red)}
-
-.about p{
-  line-height:1.75;
-  color:#666;
-  margin-bottom:15px;
-}
-
-/* CTA */
-.cta{
-  background:var(--red);
-  color:#fff;
-  text-align:center;
-  padding:65px 7%;
-}
-
-.cta h2{
-  font-size:38px;
-  text-transform:uppercase;
-}
-
-.cta p{margin:12px 0 22px}
-
-.cta .white{
-  display:inline-block;
-  background:#fff;
-  color:#111;
-  padding:14px 25px;
-  font-weight:bold;
-}
-
-/* FAQ */
-.faq{
-  max-width:900px;
-  margin:auto;
-}
-
-.faq details{
-  border-bottom:1px solid #ddd;
-  padding:20px 5px;
-}
-
-.faq summary{
-  cursor:pointer;
-  font-weight:bold;
-  font-size:17px;
-}
-
-.faq p{
-  color:#666;
-  line-height:1.6;
-  padding-top:12px;
-}
-
-/* MODAL */
-.service-modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.82);
-  display:none;
-  align-items:flex-start;
-  justify-content:center;
-  padding:20px;
-  z-index:5000;
-  overflow-y:auto;
-}
-
-.service-modal.open{display:flex}
-
-.service-modal-box{
-  background:#fff;
-  max-width:850px;
-  width:100%;
-  max-height:calc(100vh - 40px);
-  margin:auto 0;
-  overflow-y:auto;
-  overflow-x:hidden;
-  border-radius:6px;
-  position:relative;
-  box-shadow:0 20px 70px rgba(0,0,0,.5);
-}
-
-.service-modal-box img{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-  display:block;
-}
-
-.service-modal-content{
-  padding:28px 32px 32px;
-}
-
-.service-modal-content h2{
-  font-size:34px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-  color:#111;
-  position:relative;
-  padding-left:16px;
-}
-
-.service-modal-content h2:before{
-  content:'';
-  position:absolute;
-  left:0;
-  top:5px;
-  bottom:5px;
-  width:5px;
-  background:#e30613;
-}
-
-.service-modal-content p{
-  color:#666;
-  line-height:1.7;
-  font-size:15px;
-}
-
-.close-modal{
-  position:absolute;
-  right:14px;
-  top:12px;
-  width:42px;
-  height:42px;
-  border:0;
-  border-radius:50%;
-  background:#e30613;
-  color:#fff;
-  font-size:27px;
-  cursor:pointer;
-  line-height:1;
-}
-
-/* FOOTER */
-footer{
-  background:#080808;
-  color:#aaa;
-  padding:45px 7%;
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:40px;
-}
-
-footer h3{
-  color:#fff;
-  margin-bottom:15px;
-}
-
-footer p,
-footer a{
-  font-size:13px;
-  line-height:1.9;
-}
-
-.copy{
-  grid-column:1/-1;
-  border-top:1px solid #292929;
-  padding-top:20px;
-  text-align:center;
-}
-
-/* RESPONSIVO */
-@media(max-width:950px){
-  .services{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .workshops{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  footer{
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-@media(max-width:650px){
-  .top{
-    height:auto;
-    padding:18px 5%;
-    flex-wrap:wrap;
-    gap:15px;
-  }
-
-  .menu{
-    order:3;
-    width:100%;
-    justify-content:center;
-    gap:13px;
-    flex-wrap:wrap;
-  }
-
-  .hero{
-    min-height:500px;
-    padding:55px 7%;
-  }
-
-  .hero h1{font-size:43px}
-
-  .services,
-  .workshops,
-  .about,
-  footer{
-    grid-template-columns:1fr;
-  }
-
-  .block{padding:55px 6%}
-
-  .about img{height:280px}
-
-  .service-modal{padding:10px}
-
-  .service-modal-box{
-    max-height:calc(100vh - 20px);
-  }
-
-  .service-modal-box img{height:230px}
-
-  .service-modal-content{padding:22px}
-
-  .service-modal-content h2{font-size:27px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DnD Serviços Automotivos | Oficina Especializada em Santo André - SP</title>
+  <meta name="description" content="Oficina mecânica especializada em Santo André - SP. Mais de 20 anos de experiência em diagnóstico computadorizado, arrefecimento, suspensão, freios, injeção e coding VW/Audi.">
+  <meta name="theme-color" content="#0d0d0f">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DnD Serviços Automotivos">
+  <meta property="og:description" content="Manutenção automotiva de alta precisão em Santo André com mais de 20 anos de tradição e confiança.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ==========================================================================
+       RESET & DESIGN TOKENS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary: #e30613;
+      --primary-hover: #c4040f;
+      --primary-light: rgba(227, 6, 19, 0.12);
+      --primary-glow: rgba(227, 6, 19, 0.4);
+      --dark-bg: #0b0b0d;
+      --dark-surface: #141418;
+      --dark-card: #1a1a21;
+      --dark-border: rgba(255, 255, 255, 0.08);
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --whatsapp-color: #25d366;
+      --whatsapp-hover: #1eb956;
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 40px -10px rgba(0,0,0,0.18);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* ==========================================================================
+       TOP ANNOUNCEMENT BAR
+       ========================================================================== */
+    .top-bar {
+      background: #050507;
+      color: #9ca3af;
+      font-size: 13px;
+      padding: 9px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .top-bar-info {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .top-bar-info span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .top-bar-info i {
+      color: var(--primary);
+      font-size: 12px;
+    }
+
+    .top-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(37, 211, 102, 0.12);
+      color: #25d366;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .top-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #25d366;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #25d366;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .navbar {
+      background: rgba(11, 11, 13, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 26px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-logo .logo-letters {
+      letter-spacing: -1.5px;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .brand-logo .d-white {
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(255,255,255,0.25);
+    }
+
+    .brand-logo .n-red {
+      color: var(--primary);
+      text-shadow: 0 2px 14px var(--primary-glow);
+    }
+
+    .brand-logo .logo-sub {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      font-size: 13px;
+      font-weight: 700;
+      color: #e5e7eb;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-left: 2px solid rgba(255,255,255,0.15);
+      padding-left: 10px;
+    }
+
+    .brand-logo .logo-sub small {
+      font-size: 10px;
+      color: #9ca3af;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: #d1d5db;
+      font-size: 14px;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-nav-phone {
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: var(--transition);
+    }
+
+    .btn-nav-phone:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .btn-nav-phone i {
+      color: var(--primary);
+    }
+
+    .btn-nav-whatsapp {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 11px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      box-shadow: 0 4px 18px var(--primary-glow);
+    }
+
+    .btn-nav-whatsapp:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(227, 6, 19, 0.55);
+    }
+
+    .mobile-toggle {
+      display: none;
+      color: #ffffff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      background: var(--dark-bg);
+      color: #ffffff;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      padding: 90px 24px;
+      overflow: hidden;
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 85% 30%, rgba(227, 6, 19, 0.22) 0%, transparent 55%),
+        linear-gradient(90deg, rgba(11,11,13,0.95) 0%, rgba(11,11,13,0.85) 45%, rgba(11,11,13,0.5) 100%),
+        url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=85") center/cover no-repeat;
+      z-index: 1;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 2;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-box {
+      max-width: 720px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(227, 6, 19, 0.15);
+      border: 1px solid rgba(227, 6, 19, 0.35);
+      color: #fca5a5;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-pill i {
+      color: var(--primary);
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span.highlight {
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero p.lead {
+      font-size: 19px;
+      line-height: 1.65;
+      color: #d1d5db;
+      margin-bottom: 36px;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 16px 32px;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+      box-shadow: 0 10px 25px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(227, 6, 19, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 16px 30px;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #ffffff;
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 36px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      width: fit-content;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-size: 32px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .stat-num span {
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #9ca3af;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+    }
+
+    /* ==========================================================================
+       TRUST BADGES / HIGHLIGHTS
+       ========================================================================== */
+    .highlights-bar {
+      background: #0d0d10;
+      border-bottom: 1px solid var(--dark-border);
+      padding: 24px 0;
+    }
+
+    .highlights-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .highlight-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+    }
+
+    .highlight-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(227, 6, 19, 0.12);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .highlight-text h4 {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .highlight-text p {
+      color: #9ca3af;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    /* ==========================================================================
+       SECTION COMMON STYLES
+       ========================================================================== */
+    .section-wrap {
+      padding: 90px 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 56px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      color: #111827;
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .section-title span {
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       SERVIÇOS (GRID COM DESIGN MODERNO)
+       ========================================================================== */
+    .services-bg {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(227, 6, 19, 0.3);
+    }
+
+    .service-card-media {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .service-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-card-media img {
+      transform: scale(1.08);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(17, 17, 20, 0.82);
+      backdrop-filter: blur(6px);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .service-badge.featured {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .service-icon-floating {
+      position: absolute;
+      bottom: -18px;
+      left: 20px;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      z-index: 2;
+      border: 1px solid #f1f5f9;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-icon-floating {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .service-card-body {
+      padding: 28px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card-body h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card-body p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .service-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .service-card-footer i {
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover .service-card-footer i {
+      transform: translateX(4px);
+    }
+
+    /* Fallback image */
+    .image-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #18181b;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       LOCALIZAÇÃO / UNIDADE SANTO ANDRÉ (DARK SECTION)
+       ========================================================================== */
+    .workshop-section {
+      background: #0f0f13;
+      color: #ffffff;
+      padding: 90px 24px;
+      position: relative;
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .workshop-section .section-title {
+      color: #ffffff;
+    }
+
+    .workshop-section .section-subtitle {
+      color: #9ca3af;
+    }
+
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .workshop-card {
+      background: #16161c;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .workshop-card:hover {
+      border-color: rgba(227, 6, 19, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.4);
+    }
+
+    .workshop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 28px;
+      right: 28px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .workshop-header-tag {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .workshop-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .workshop-card p {
+      color: #9ca3af;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex: 1;
+    }
+
+    .workshop-card .action-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      align-self: flex-start;
+    }
+
+    .workshop-card .action-link:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       SOBRE A DND
+       ========================================================================== */
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-image-container {
+      position: relative;
+    }
+
+    .about-image-main {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .about-badge-floating {
+      position: absolute;
+      bottom: -24px;
+      right: -20px;
+      background: #0b0b0d;
+      color: #ffffff;
+      padding: 24px 28px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--primary);
+      box-shadow: var(--shadow-xl);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .about-badge-floating .years {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--primary);
+    }
+
+    .about-badge-floating .text {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #e5e7eb;
+    }
+
+    .about-content .section-title {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      color: #4b5563;
+      font-size: 16px;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0 36px;
+    }
+
+    .about-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .about-feature-item i {
+      color: var(--primary);
+      font-size: 16px;
+    }
+
+    /* ==========================================================================
+       CTA BANNER
+       ========================================================================== */
+    .cta-banner {
+      background:
+        radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        linear-gradient(135deg, #e30613 0%, #b9000b 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 60px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      box-shadow: 0 25px 50px -12px rgba(227, 6, 19, 0.45);
+      margin-bottom: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner-text h2 {
+      font-size: 38px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .cta-banner-text p {
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+    }
+
+    .btn-cta-white {
+      background: #ffffff;
+      color: #111827;
+      padding: 18px 36px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      white-space: nowrap;
+    }
+
+    .btn-cta-white:hover {
+      background: #0f0f13;
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    }
+
+    /* ==========================================================================
+       FAQ (ACCORDION MODERNO)
+       ========================================================================== */
+    .faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: var(--radius-sm);
+      margin-bottom: 14px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      border-color: #cbd5e1;
+    }
+
+    .faq-item[open] {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-item summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 17px;
+      color: #111827;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 13px;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] summary .faq-icon {
+      background: var(--primary);
+      color: #ffffff;
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       MODAL DE DETALHES DO SERVIÇO
+       ========================================================================== */
+    .service-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 14, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .service-modal.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .service-modal-box {
+      background: #ffffff;
+      max-width: 840px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: var(--radius-lg);
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.25s ease;
+    }
+
+    .service-modal.open .service-modal-box {
+      transform: scale(1);
+    }
+
+    .modal-media-wrap {
+      position: relative;
+      height: 340px;
+      background: #111;
+    }
+
+    .modal-media-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(15, 15, 20, 0.75);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      z-index: 10;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .close-modal:hover {
+      background: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .service-modal-content {
+      padding: 36px 40px;
+    }
+
+    .modal-category-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .service-modal-content h2 {
+      font-size: 32px;
+      font-weight: 900;
+      color: #111827;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .service-modal-content p {
+      color: #4b5563;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       WHATSAPP FLOATING BUTTON (STICKY)
+       ========================================================================== */
+    .whatsapp-floating {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 990;
+      background: #25d366;
+      color: #ffffff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+    }
+
+    .whatsapp-floating:hover {
+      background: #1eb956;
+      transform: scale(1.1) rotate(6deg);
+      box-shadow: 0 14px 32px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-floating .tooltip {
+      position: absolute;
+      right: 72px;
+      background: #111827;
+      color: #ffffff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .whatsapp-floating:hover .tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      background: #08080a;
+      color: #9ca3af;
+      padding: 80px 24px 30px;
+      border-top: 1px solid var(--dark-border);
+    }
+
+    .footer-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+
+    .footer-col h3 {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .footer-brand .brand-logo {
+      margin-bottom: 18px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+      font-size: 14px;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-contact-item i {
+      color: var(--primary);
+      font-size: 16px;
+      margin-top: 3px;
+    }
+
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* ==========================================================================
+       RESPONSIVIDADE
+       ========================================================================== */
+    @media (max-width: 1200px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .highlights-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 50px;
+      }
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .workshop-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-wrap {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-image-main {
+        height: 380px;
+      }
+      .about-badge-floating {
+        right: 10px;
+        bottom: -16px;
+      }
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+      .cta-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 48px 32px;
+      }
+      .cta-banner-text p {
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        display: none;
+      }
+      .nav-links, .btn-nav-phone {
+        display: none;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .hero {
+        padding: 60px 20px;
+        min-height: auto;
+      }
+      .hero h1 {
+        font-size: 40px;
+      }
+      .hero p.lead {
+        font-size: 16px;
+      }
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .highlights-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-wrap {
+        padding: 60px 20px;
+      }
+      .section-title {
+        font-size: 32px;
+      }
+      .service-modal-content {
+        padding: 24px;
+      }
+      .service-modal-content h2 {
+        font-size: 24px;
+      }
+      .modal-media-wrap {
+        height: 220px;
+      }
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="top">
-
-  <div class="logo">
-    <span class="d-white">D</span><span class="n-red">n</span><span class="d-white">D</span>
-    Serviços Automotivos
-  </div>
-
-  <nav class="menu">
-    <a href="#servicos">Serviços</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#faq">Dúvidas</a>
-  </nav>
-
-  <a class="client"
-     href="https://wa.me/5511966702230"
-     target="_blank">
-    WhatsApp
-  </a>
-
-</header>
-
-
-<section class="hero">
-
-  <div class="hero-box">
-
-    <small>MANUTENÇÃO AUTOMOTIVA</small>
-
-    <h1>
-      Seu carro.<br>
-      <span>Nosso serviço.</span>
-    </h1>
-
-    <p>
-      Serviços automotivos para manutenção, diagnóstico e cuidados
-      com seu veículo em um ambiente profissional.
-    </p>
-
-    <a class="red-btn" href="#servicos">
-      CONHEÇA NOSSOS SERVIÇOS
-    </a>
-
-  </div>
-
-</section>
-
-
-<section class="block" id="servicos">
-
-  <div class="title">
-
-    <h2>
-      Nossos <span>serviços</span>
-    </h2>
-
-    <p>
-      Confira os principais serviços disponíveis na DnD Serviços Automotivos.
-    </p>
-
-  </div>
-
-
-  <div class="services">
-
-
-    <!-- DIAGNÓSTICO -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Diagnóstico Automotivo"
-      data-text="Realizamos uma avaliação completa do veículo para identificar falhas, ruídos, alertas no painel e problemas que podem não ser percebidos no uso diário. Utilizamos procedimentos de diagnóstico para entender a origem do defeito antes de iniciar o reparo. Dessa forma, buscamos evitar trocas desnecessárias de peças e orientar o cliente sobre o que realmente precisa ser feito para manter o carro funcionando corretamente."
-      data-image="https://uautos.com.br/uploads/blog/quando-o-carro-comeca-a-falhar-o-que-pode-ser-e-como-agir.png">
-
-      <img
-        src="https://uautos.com.br/uploads/blog/quando-o-carro-comeca-a-falhar-o-que-pode-ser-e-como-agir.png"
-        alt="Diagnóstico automotivo">
-
-      <div class="service-info">
-        <div class="ico">🔎</div>
-        <h3>Diagnóstico</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- ARREFECIMENTO -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Arrefecimento"
-      data-text="Cuidamos do sistema responsável por controlar a temperatura do motor. Verificamos componentes como radiador, reservatório, mangueiras, conexões, ventoinha e fluido de arrefecimento. Nosso trabalho busca identificar vazamentos, superaquecimento e outras irregularidades que podem causar danos ao motor."
-      data-image="https://motorcityoficina.com.br/wp-content/uploads/2024/04/sistema-arrefecimento-mantencao-protege-seu-carro.jpg">
-
-      <img
-        src="https://motorcityoficina.com.br/wp-content/uploads/2024/04/sistema-arrefecimento-mantencao-protege-seu-carro.jpg"
-        alt="Sistema de arrefecimento">
-
-      <div class="service-info">
-        <div class="ico">💧</div>
-        <h3>Arrefecimento</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- EMBREAGEM -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Embreagem"
-      data-text="A embreagem é fundamental para transmitir a força do motor para as rodas e permitir as trocas de marcha. Avaliamos sinais como pedal muito pesado, dificuldade para engatar marchas, trepidações, patinação e ruídos. Nosso serviço busca identificar o desgaste do conjunto e orientar sobre o reparo adequado."
-      data-image="https://f.magazynauto.pl/magazynauto_prod_2022_01/1643382565d5465b.jpg">
-
-      <img
-        src="https://f.magazynauto.pl/magazynauto_prod_2022_01/1643382565d5465b.jpg"
-        alt="Embreagem">
-
-      <div class="service-info">
-        <div class="ico">🔧</div>
-        <h3>Embreagem</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- SUSPENSÃO -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Suspensão"
-      data-text="Fazemos a avaliação da suspensão, incluindo amortecedores, molas, buchas, bieletas e demais componentes. Procuramos ruídos, folgas, desgaste irregular dos pneus, instabilidade e impactos. Depois da avaliação, orientamos sobre a manutenção necessária."
-      data-image="https://production.elevify-cdn.com/images/2026-05/2f17a800-5c42-4c57-9dcf-3c5492c18e70.jpg">
-
-      <img
-        src="https://production.elevify-cdn.com/images/2026-05/2f17a800-5c42-4c57-9dcf-3c5492c18e70.jpg"
-        alt="Suspensão automotiva">
-
-      <div class="service-info">
-        <div class="ico">🛞</div>
-        <h3>Suspensão</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- FREIOS -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Freios"
-      data-text="O sistema de freios é um dos principais itens de segurança do veículo. Verificamos componentes como pastilhas, discos, tambores, lonas e fluido, observando sinais de desgaste ou funcionamento irregular."
-      data-image="https://images.pexels.com/photos/30470930/pexels-photo-30470930.jpeg">
-
-      <img
-        src="https://images.pexels.com/photos/30470930/pexels-photo-30470930.jpeg"
-        alt="Sistema de freios">
-
-      <div class="service-info">
-        <div class="ico">🛑</div>
-        <h3>Freios</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- INJEÇÃO -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Injeção Eletrônica"
-      data-text="Realizamos avaliação do sistema de injeção eletrônica para identificar falhas que podem causar perda de desempenho, aumento de consumo, dificuldade para ligar ou luz de advertência no painel."
-      data-image="https://perthswedishauto.com.au/img/fuel.jpg">
-
-      <img
-        src="https://perthswedishauto.com.au/img/fuel.jpg"
-        alt="Diagnóstico eletrônico">
-
-      <div class="service-info">
-        <div class="ico">💻</div>
-        <h3>Injeção</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- CORREIAS -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Correias"
-      data-text="Inspecionamos as correias e os componentes relacionados ao funcionamento do motor, procurando sinais de desgaste, rachaduras, ressecamento, folgas ou danos."
-      data-image="https://www.roverspares.co.za/images/blog/serpentine-belt-replacement-hero.webp">
-
-      <img
-        src="https://www.roverspares.co.za/images/blog/serpentine-belt-replacement-hero.webp"
-        alt="Correias do motor">
-
-      <div class="service-info">
-        <div class="ico">🔄</div>
-        <h3>Correias</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- TROCA DE ÓLEO -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Troca de Óleo"
-      data-text="Realizamos a troca de óleo conforme a necessidade do veículo e as especificações adequadas para o motor. Também verificamos o estado geral relacionado à lubrificação."
-      data-image="https://www.superiordieselandautocareinc.com/assets/img/blog/oil-change-maintenance-guide.png">
-
-      <img
-        src="https://www.superiordieselandautocareinc.com/assets/img/blog/oil-change-maintenance-guide.png"
-        alt="Troca de óleo">
-
-      <div class="service-info">
-        <div class="ico">🛢️</div>
-        <h3>Troca de Óleo</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- AR CONDICIONADO -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Ar Condicionado"
-      data-text="Realizamos a avaliação e manutenção do sistema de ar-condicionado automotivo. Verificamos o funcionamento do compressor, condensador, evaporador, ventilação, mangueiras e demais componentes do sistema. Também procuramos sinais de vazamento, perda de eficiência e outros problemas que podem fazer o ar deixar de gelar corretamente."
-      data-image="https://www.tecararcondicionado.com.br/wp-content/uploads/2019/12/manutencao-de-ar-condicionado.jpg">
-
-      <img
-        src="https://www.tecararcondicionado.com.br/wp-content/uploads/2019/12/manutencao-de-ar-condicionado.jpg"
-        alt="Ar condicionado automotivo">
-
-      <div class="service-info">
-        <div class="ico">❄️</div>
-        <h3>Ar Condicionado</h3>
-        <p>Toque para saber mais</p>
-      </div>
-
-    </article>
-
-
-    <!-- CODING VW / AUDI -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Coding VW / Audi"
-      data-text="Serviço de coding e configuração eletrônica exclusivo para veículos Volkswagen (VW) e Audi. Realizamos diagnóstico dos módulos e, quando compatível com o veículo, configurações e ativações eletrônicas utilizando equipamento de diagnóstico. O procedimento pode ser utilizado para personalizações e ajustes disponíveis nos módulos do veículo. Antes de qualquer alteração, verificamos a compatibilidade e explicamos o procedimento ao cliente."
-      data-image="https://www.awesomegti.com/product_images/uploaded_images/awesome-remap-3.jpg">
-
-      <img
-        src="https://www.awesomegti.com/product_images/uploaded_images/awesome-remap-3.jpg"
-        alt="Coding VW e Audi">
-
-      <div class="service-info">
-        <div class="ico">💻</div>
-        <h3>Coding VW / Audi</h3>
-        <p>Exclusivo VW e Audi</p>
-      </div>
-
-    </article>
-
-
-    <!-- LIMPEZA DE BICOS INJETORES -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Limpeza de Bicos Injetores"
-      data-text="Realizamos a limpeza e avaliação dos bicos injetores para ajudar a manter uma pulverização adequada do combustível. O serviço pode ser indicado quando existem sintomas como falhas, marcha lenta irregular, dificuldade para pegar, perda de desempenho ou aumento de consumo. Também avaliamos o funcionamento do sistema de injeção antes de definir o procedimento, buscando identificar a causa do problema e evitar trocas desnecessárias."
-      data-image="https://www.canaldapeca.com.br/blog/wp-content/uploads/2018/07/limbic3.jpg">
-
-      <img
-        src="https://www.canaldapeca.com.br/blog/wp-content/uploads/2018/07/limbic3.jpg"
-        alt="Limpeza e teste de bicos injetores">
-
-      <div class="service-info">
-        <div class="ico">⛽</div>
-        <h3>Limpeza de Bicos</h3>
-        <p>Limpeza e avaliação</p>
-      </div>
-
-    </article>
-
-
-    <!-- DESCARBONIZAÇÃO DE VÁLVULAS -->
-    <article class="service service-photo"
-      onclick="openService(this)"
-      data-title="Descarbonização de Válvulas"
-      data-text="Serviço voltado à remoção de depósitos de carbono que podem se acumular em componentes do sistema de admissão e nas válvulas, conforme o tipo de motor e o procedimento indicado. A descarbonização pode ser indicada quando há perda de desempenho, funcionamento irregular ou outros sinais relacionados ao acúmulo de resíduos. Antes do serviço, avaliamos o veículo e verificamos se a limpeza é realmente indicada para o caso."
-      data-image="https://avusmotorsports.com.br/wp-content/uploads/2026/01/IMG_5250.JPG-1.webp">
-
-      <img
-        src="https://avusmotorsports.com.br/wp-content/uploads/2026/01/IMG_5250.JPG-1.webp"
-        alt="Descarbonização de válvulas">
-
-      <div class="service-info">
-        <div class="ico">🧰</div>
-        <h3>Descarbonização</h3>
-        <p>Limpeza de válvulas</p>
-      </div>
-
-    </article>
-
-
-  </div>
-</section>
-
-
-<!-- OFICINA -->
-<section class="find" id="oficinas">
-
-  <div class="title">
-    <h2>Encontre nossa <span>oficina</span></h2>
-    <p>
-      Veja os dados da DnD Mecânica e entre em contato para atendimento.
-    </p>
-  </div>
-
-  <div class="workshops">
-
-    <article class="shop">
-      <small>OFICINA</small>
-      <h3>DnD  Santo André - SP</h3>
-
-      <p>
-        Rua Batávia, 807 – Parque Novo Oratório,
-        Santo André – SP
-      </p>
-
-      <a
-        class="map"
-        href="https://www.google.com/maps/search/?api=1&query=Rua+Batavia+807+Parque+Novo+Oratorio+Santo+Andre+SP"
-        target="_blank">
-        VER NO MAPA →
-      </a>
-    </article>
-
-
-    <article class="shop">
-      <small>ATENDIMENTO</small>
-      <h3>Fale conosco</h3>
-
-      <p>
-        📱 +55 11 96670-2230<br>
-        Segunda a sexta: 08:00 às 17:30
-      </p>
-
-      <a
-        class="map"
-        href="https://wa.me/5511966702230"
-        target="_blank">
-        WHATSAPP →
-      </a>
-    </article>
-
-
-    <article class="shop">
-      <small>HORÁRIO</small>
-      <h3>Funcionamento</h3>
-
-      <p>
-        Segunda a sexta-feira: 08:00 às 17:30<br>
-        Sábado e domingo: Fechado
-      </p>
-    </article>
-
-  </div>
-</section>
-
-
-<!-- SOBRE -->
-<section class="block about" id="sobre">
-
-  <div>
-    <img
-      src="https://images.unsplash.com/photo-1632823471565-1ecdf5c0d8b7?auto=format&fit=crop&w=1200&q=85"
-      alt="Oficina automotiva">
-  </div>
-
-  <div>
-
-    <h2>
-      Sobre a <span>DnD</span>
-    </h2>
-
-    <p>
-      Sobre a DnD Serviços Automotivos
-
-A DnD Serviços Automotivos possui mais de 20 anos de experiência no ramo automotivo, construindo ao longo desse período conhecimento, experiência e confiança no atendimento aos nossos clientes.
-
-Trabalhamos com manutenção, diagnóstico e diversos serviços automotivos, sempre buscando identificar corretamente cada problema e oferecer uma solução adequada para cada veículo.
-
-Nossa experiência permite realizar os serviços com atenção aos detalhes, transparência e responsabilidade. Na DnD, o objetivo é cuidar do seu veículo com o mesmo compromisso que construímos ao longo de mais de duas décadas no setor automotivo.
-    </p>
-
-    <p>
-      O objetivo é oferecer um atendimento claro,
-      explicar os serviços necessários e cuidar de
-      cada veículo com atenção.
-    </p>
-
-    <a
-      class="red-btn"
-      href="https://wa.me/5511966702230"
-      target="_blank">
-      FALE CONOSCO
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- CTA -->
-<section class="cta">
-
-  <h2>Fale com a DnD</h2>
-
-  <p>
-    Precisa de manutenção ou quer tirar uma dúvida?
-  </p>
-
-  <a
-    class="white"
-    href="https://wa.me/5511966702230"
-    target="_blank">
-    💬 WHATSAPP
-  </a>
-
-</section>
-
-
-<!-- FAQ -->
-<section class="block" id="faq">
-
-  <div class="title">
-
-    <h2>
-      Dúvidas <span>frequentes</span>
-    </h2>
-
-  </div>
-
-  <div class="faq">
-
-    <details>
-      <summary>
-        Como faço para falar com a DnD?
-      </summary>
-
-      <p>
-        Clique em qualquer botão de WhatsApp da página
-        para abrir uma conversa diretamente com a oficina.
-      </p>
-    </details>
-
-
-    <details>
-      <summary>
-        Qual é o horário de atendimento?
-      </summary>
-
-      <p>
-        Segunda a sexta-feira, das 08:00 às 17:30
-      </p>
-    </details>
-
-
-    <details>
-      <summary>
-        Onde a oficina está localizada?
-      </summary>
-
-      <p>
-        Rua Batávia, 807, Parque Novo Oratório,
-        Santo André - SP.
-      </p>
-    </details>
-
-
-    <details>
-      <summary>
-        Preciso agendar?
-      </summary>
-
-      <p>
-        Entre em contato pelo WhatsApp para verificar
-        o atendimento e combinar o melhor horário.
-      </p>
-    </details>
-
-  </div>
-</section>
-
-
-<!-- MODAL DOS SERVIÇOS -->
-<div
-  class="service-modal"
-  id="serviceModal"
-  onclick="closeService(event)">
-
-  <div class="service-modal-box">
-
-    <button
-      class="close-modal"
-      aria-label="Fechar"
-      onclick="closeService()">
-      ×
-    </button>
-
-    <img
-      id="modalImage"
-      src=""
-      alt="">
-
-    <div class="service-modal-content">
-
-      <h2 id="modalTitle"></h2>
-
-      <p id="modalText"></p>
-
-      <a
-        class="red-btn"
-        href="https://wa.me/5511966702230"
-        target="_blank">
-        💬 Fale Conosco
+  <!-- TOP BAR -->
+  <aside class="top-bar">
+    <div class="top-bar-info">
+      <span><i class="fa-solid fa-location-dot"></i> Rua Batávia, 807 – Pq. Novo Oratório, Santo André - SP</span>
+      <span><i class="fa-solid fa-clock"></i> Seg a Sex: 08:00 às 17:30</span>
+    </div>
+    <div class="top-badge">
+      Oficina Aberta para Atendimento
+    </div>
+  </aside>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="DnD Serviços Automotivos">
+        <span class="logo-letters">
+          <span class="d-white">D</span><span class="n-red">n</span><span class="d-white">D</span>
+        </span>
+        <div class="logo-sub">
+          <span>Serviços</span>
+          <small>Automotivos</small>
+        </div>
       </a>
 
+      <nav class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#oficinas">Localização</a>
+        <a href="#sobre">Sobre Nós</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+
+      <div class="nav-cta-group">
+        <a href="tel:5511966702230" class="btn-nav-phone" title="Ligar para oficina">
+          <i class="fa-solid fa-phone"></i> (11) 96670-2230
+        </a>
+        <a href="https://wa.me/5511966702230?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento/atendimento."
+           class="btn-nav-whatsapp"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp"></i> Fale Conosco
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-box">
+        <div class="hero-pill">
+          <i class="fa-solid fa-certificate"></i> +20 Anos de Excelência no ABC Paulista
+        </div>
+        <h1>
+          Seu carro com o cuidado de quem <span class="highlight">entende.</span>
+        </h1>
+        <p class="lead">
+          Manutenção preventiva e corretiva, diagnóstico computadorizado de última geração e atendimento transparente para seu veículo rodar com total segurança e desempenho.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://wa.me/5511966702230?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação%20para%20o%20meu%20carro."
+             class="btn-primary"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp"></i> Agendar pelo WhatsApp
+          </a>
+          <a href="#servicos" class="btn-secondary">
+            Ver Todos os Serviços <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">+20<span>+</span></div>
+            <div class="stat-label">Anos de Tradição</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Transparência</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">12<span>+</span></div>
+            <div class="stat-label">Especialidades</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS / DIFERENCIAIS -->
+  <section class="highlights-bar">
+    <div class="highlights-container">
+      <div class="highlight-card">
+        <div class="highlight-icon"><i class="fa-solid fa-microchip"></i></div>
+        <div class="highlight-text">
+          <h4>Diagnóstico Preciso</h4>
+          <p>Equipamentos eletrônicos para identificar a causa real.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon"><i class="fa-solid fa-handshake"></i></div>
+        <div class="highlight-text">
+          <h4>Sem Trocas Desnecessárias</h4>
+          <p>Orçamento honesto e explicação clara de cada etapa.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <div class="highlight-text">
+          <h4>Peças de Qualidade</h4>
+          <p>Componentes homologados para máxima durabilidade.</p>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon"><i class="fa-solid fa-car-side"></i></div>
+        <div class="highlight-text">
+          <h4>Especialista VW & Audi</h4>
+          <p>Coding e parametrizações eletrônicas dedicadas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS SECTION -->
+  <section class="services-bg" id="servicos">
+    <div class="section-wrap">
+      <div class="section-header">
+        <span class="section-tag">Manutenção Automotiva</span>
+        <h2 class="section-title">Nossos <span>Serviços</span> Especializados</h2>
+        <p class="section-subtitle">
+          Clique em qualquer serviço para ver os detalhes completos, sinais de alerta e orientações técnicas de nossa equipe.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 1. DIAGNÓSTICO -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Diagnóstico Automotivo Computadorizado"
+          data-badge="Tecnologia Avançada"
+          data-text="Realizamos uma avaliação completa e detalhada do veículo utilizando scanners de alta precisão para identificar falhas intermitentes, ruídos, luzes de alerta acesas no painel e comportamentos anômalos. Nosso objetivo é descobrir a raiz exata do problema antes de desmontar ou trocar qualquer peça, garantindo economia, segurança e agilidade para o cliente."
+          data-image="https://uautos.com.br/uploads/blog/quando-o-carro-comeca-a-falhar-o-que-pode-ser-e-como-agir.png">
+          <div class="service-card-media">
+            <img src="https://uautos.com.br/uploads/blog/quando-o-carro-comeca-a-falhar-o-que-pode-ser-e-como-agir.png" alt="Diagnóstico automotivo">
+            <span class="service-badge featured"><i class="fa-solid fa-bolt"></i> Scanner</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Diagnóstico</h3>
+            <p>Leitura de parâmetros, detecção de falhas e checagem computadorizada de sensores.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. ARREFECIMENTO -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Sistema de Arrefecimento"
+          data-badge="Proteção do Motor"
+          data-text="O controle térmico é vital para a saúde do propulsor. Inspecionamos minuciosamente o radiador, bomba d'água, válvula termostática, reservatório de expansão, mangueiras, abraçadeiras, acionamento da ventoinha e a concentração do fluido com aditivo correto. Evitamos superaquecimentos que podem danificar gravemente a junta do cabeçote."
+          data-image="https://motorcityoficina.com.br/wp-content/uploads/2024/04/sistema-arrefecimento-mantencao-protege-seu-carro.jpg">
+          <div class="service-card-media">
+            <img src="https://motorcityoficina.com.br/wp-content/uploads/2024/04/sistema-arrefecimento-mantencao-protege-seu-carro.jpg" alt="Sistema de arrefecimento">
+            <span class="service-badge"><i class="fa-solid fa-temperature-half"></i> Térmico</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-droplet"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Arrefecimento</h3>
+            <p>Prevenção contra superaquecimento, teste de pressão, vazamentos e aditivação.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. EMBREAGEM -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Sistema de Embreagem"
+          data-badge="Transmissão Suave"
+          data-text="A embreagem transmite a potência do motor para a caixa de câmbio. Identificamos pedal duro ou pesado, patinação em subidas, marchas que 'arrunham', trepidações ao sair da inércia ou estalos. Avaliamos o platô, disco, rolamento e atuadores hidráulicos para devolver maciez e precisão ao dirigir."
+          data-image="https://f.magazynauto.pl/magazynauto_prod_2022_01/1643382565d5465b.jpg">
+          <div class="service-card-media">
+            <img src="https://f.magazynauto.pl/magazynauto_prod_2022_01/1643382565d5465b.jpg" alt="Embreagem automotiva">
+            <span class="service-badge"><i class="fa-solid fa-gears"></i> Câmbio</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-wrench"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Embreagem</h3>
+            <p>Diagnóstico de desgaste, substituição do kit, platô, disco e atuadores hidráulicos.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. SUSPENSÃO -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Suspensão & Estabilidade"
+          data-badge="Conforto & Segurança"
+          data-text="A suspensão absorve os impactos do solo e garante a estabilidade do veículo em curvas e frenagens. Avaliamos amortecedores, batentes, molas, buchas de bandeja, pivôs, bieletas e caixa de direção. Eliminamos barulhos metálicos, pancadas secas e desgaste irregular nos pneus."
+          data-image="https://production.elevify-cdn.com/images/2026-05/2f17a800-5c42-4c57-9dcf-3c5492c18e70.jpg">
+          <div class="service-card-media">
+            <img src="https://production.elevify-cdn.com/images/2026-05/2f17a800-5c42-4c57-9dcf-3c5492c18e70.jpg" alt="Suspensão automotiva">
+            <span class="service-badge"><i class="fa-solid fa-shield-halved"></i> Estabilidade</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-circle-notch"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Suspensão</h3>
+            <p>Amortecedores, buchas, pivôs, bieletas e eliminação de ruídos e instabilidade.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. FREIOS -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Freios de Alta Precisão"
+          data-badge="Segurança Máxima"
+          data-text="Item primário de segurança ativa. Efetuamos a revisão completa: espessura de discos e pastilhas, lonas, tambores, flexíveis, cilindro mestre e teste de ponto de ebulição do fluido de freio (DOT 4 / DOT 5.1). Garantimos resposta imediata e firme no pedal."
+          data-image="https://images.pexels.com/photos/30470930/pexels-photo-30470930.jpeg">
+          <div class="service-card-media">
+            <img src="https://images.pexels.com/photos/30470930/pexels-photo-30470930.jpeg" alt="Sistema de freios">
+            <span class="service-badge featured"><i class="fa-solid fa-triangle-exclamation"></i> Crítico</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-circle-stop"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Freios</h3>
+            <p>Troca de pastilhas, discos, fluido de freio sangrado por pressão e regulagens.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6. INJEÇÃO ELETRÔNICA -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Injeção Eletrônica"
+          data-badge="Eficiência & Consumo"
+          data-text="O cérebro do veículo. Fazemos diagnóstico minucioso da sonda lambda, sensor MAP/MAF, corpo de borboleta (TBI), velas de ignição, cabos e bobinas. Solucionamos perda de potência, marcha lenta oscilando, consumo elevado e luz da injeção acesa no painel."
+          data-image="https://perthswedishauto.com.au/img/fuel.jpg">
+          <div class="service-card-media">
+            <img src="https://perthswedishauto.com.au/img/fuel.jpg" alt="Diagnóstico eletrônico">
+            <span class="service-badge"><i class="fa-solid fa-microchip"></i> Eletrônica</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-laptop-code"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Injeção Eletrônica</h3>
+            <p>Ajustes de mistura, sensores, atuadores, velas, cabos e corpo de borboleta.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7. CORREIAS -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Correia Dentada & Acessórios"
+          data-badge="Prevenção Vital"
+          data-text="A quebra da correia dentada pode provocar danos severos ao motor (como empenamento de válvulas e quebra de pistões). Inspecionamos a correia sincronizadora, tensionadores, polias e correia de acessórios (alternador e ar-condicionado), respeitando o manual de cada montadora."
+          data-image="https://www.roverspares.co.za/images/blog/serpentine-belt-replacement-hero.webp">
+          <div class="service-card-media">
+            <img src="https://www.roverspares.co.za/images/blog/serpentine-belt-replacement-hero.webp" alt="Correias do motor">
+            <span class="service-badge"><i class="fa-solid fa-rotate"></i> Sincronismo</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-arrows-spin"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Correias & Tensores</h3>
+            <p>Troca preventiva da correia dentada, tensores, correia Poly-V e bomba d'água.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 8. TROCA DE ÓLEO -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Troca de Óleo & Filtros"
+          data-badge="Lubrificação Correta"
+          data-text="Lubrificante correto é longevidade para o motor. Trabalhamos estritamente com as viscosidades e normas exigidas pelo fabricante (API, ACEA e aprovações OEM como VW 508.88/502.00, etc.). Trocamos o filtro de óleo, filtro de combustível, filtro de ar e filtro de cabine."
+          data-image="https://www.superiordieselandautocareinc.com/assets/img/blog/oil-change-maintenance-guide.png">
+          <div class="service-card-media">
+            <img src="https://www.superiordieselandautocareinc.com/assets/img/blog/oil-change-maintenance-guide.png" alt="Troca de óleo">
+            <span class="service-badge"><i class="fa-solid fa-oil-can"></i> Manutenção</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-oil-can"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Troca de Óleo</h3>
+            <p>Óleos sintéticos homologados e pacote de filtros para garantir a proteção do motor.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9. AR CONDICIONADO -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Climatização & Ar Condicionado"
+          data-badge="Conforto Térmico"
+          data-text="Manutenção completa do sistema de ar condicionado: teste de estanqueidade contra microvazamentos de gás refrigerante, revisão do compressor elétrico/mecânico, condensador, evaporador, recarga com gás R134a na quantidade exata e higienização com ozônio para eliminar ácaros e odores."
+          data-image="https://www.tecararcondicionado.com.br/wp-content/uploads/2019/12/manutencao-de-ar-condicionado.jpg">
+          <div class="service-card-media">
+            <img src="https://www.tecararcondicionado.com.br/wp-content/uploads/2019/12/manutencao-de-ar-condicionado.jpg" alt="Ar condicionado automotivo">
+            <span class="service-badge"><i class="fa-solid fa-snowflake"></i> Clima</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-snowflake"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Ar Condicionado</h3>
+            <p>Carga de gás, detecção de vazamentos, compressor e higienização do sistema.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 10. CODING VW / AUDI -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Coding & Configurações VW / Audi"
+          data-badge="Exclusivo VAG"
+          data-text="Serviço especializado para plataformas Volkswagen e Audi (VAG). Realizamos ativação de funções ocultas como varredura de ponteiros (needle sweep), rebatimento automático de retrovisores, fechamento de janelas com chuva, luzes de seta confort, desativação de start-stop e ajustes eletrônicos conforme os módulos do carro permitirem."
+          data-image="https://www.awesomegti.com/product_images/uploaded_images/awesome-remap-3.jpg">
+          <div class="service-card-media">
+            <img src="https://www.awesomegti.com/product_images/uploaded_images/awesome-remap-3.jpg" alt="Coding VW e Audi">
+            <span class="service-badge featured"><i class="fa-solid fa-star"></i> Especialidade</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-code"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Coding VW / Audi</h3>
+            <p>Ativações eletrônicas, ajustes em módulos e personalização exclusiva VAG.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 11. LIMPEZA DE BICOS -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Limpeza & Teste de Bicos Injetores"
+          data-badge="Vazão & Estanqueidade"
+          data-text="Testamos a vazão, leque de pulverização e vedação dos bicos injetores em bancada computadorizada com cuba ultrassônica. Indicado quando há falhas em aceleração, marcha lenta irregular, aumento do consumo ou dificuldade para partida a frio."
+          data-image="https://www.canaldapeca.com.br/blog/wp-content/uploads/2018/07/limbic3.jpg">
+          <div class="service-card-media">
+            <img src="https://www.canaldapeca.com.br/blog/wp-content/uploads/2018/07/limbic3.jpg" alt="Limpeza de bicos injetores">
+            <span class="service-badge"><i class="fa-solid fa-gas-pump"></i> Alimentação</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-filter"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Limpeza de Bicos</h3>
+            <p>Equalização e ultrassom para queima perfeita e restauração da economia.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- 12. DESCARBONIZAÇÃO -->
+        <article class="service-card"
+          onclick="openService(this)"
+          data-title="Descarbonização de Válvulas (Injeção Direta)"
+          data-badge="Alta Performance"
+          data-text="Essencial em motores com injeção direta (TSI, TFSI, THP, etc.), onde o combustível não banha o verso das válvulas, provocando acúmulo de crostas de carvão. Efetuamos a limpeza técnica do coletor e dutos de admissão, restabelecendo o fluxo de ar, resposta imediata do acelerador e economia."
+          data-image="https://avusmotorsports.com.br/wp-content/uploads/2026/01/IMG_5250.JPG-1.webp">
+          <div class="service-card-media">
+            <img src="https://avusmotorsports.com.br/wp-content/uploads/2026/01/IMG_5250.JPG-1.webp" alt="Descarbonização de válvulas">
+            <span class="service-badge featured"><i class="fa-solid fa-fire"></i> Direta / TSI</span>
+            <div class="service-icon-floating"><i class="fa-solid fa-sparkles"></i></div>
+          </div>
+          <div class="service-card-body">
+            <h3>Descarbonização</h3>
+            <p>Remoção de depósitos de carbono em válvulas e coletores de admissão.</p>
+            <div class="service-card-footer">
+              <span>Ver detalhes</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OFICINA / LOCALIZAÇÃO -->
+  <section class="workshop-section" id="oficinas">
+    <div class="section-wrap" style="padding-top:0; padding-bottom:0;">
+      <div class="section-header">
+        <span class="section-tag">Santo André - SP</span>
+        <h2 class="section-title">Venha Conhecer a <span>DnD</span></h2>
+        <p class="section-subtitle">
+          Estrutura completa, ferramentas modernas e fácil acesso no Parque Novo Oratório.
+        </p>
+      </div>
+
+      <div class="workshop-grid">
+        <div class="workshop-card">
+          <span class="workshop-header-tag"><i class="fa-solid fa-location-dot"></i> Endereço</span>
+          <h3>Unidade Santo André</h3>
+          <p>
+            Rua Batávia, 807 – Parque Novo Oratório<br>
+            Santo André – SP<br>
+            CEP 09251-140 (Fácil acesso pela Av. das Nações e Av. Oratório)
+          </p>
+          <a href="https://www.google.com/maps/search/?api=1&query=Rua+Batavia+807+Parque+Novo+Oratorio+Santo+Andre+SP"
+             class="action-link"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i class="fa-solid fa-diamond-turn-right"></i> Abrir no Google Maps
+          </a>
+        </div>
+
+        <div class="workshop-card">
+          <span class="workshop-header-tag"><i class="fa-solid fa-headset"></i> Atendimento Rápido</span>
+          <h3>Fale pelo WhatsApp</h3>
+          <p>
+            Tire dúvidas sobre defeitos, agende uma revisão ou solicite uma cotação com nossa equipe técnica com rapidez.
+          </p>
+          <a href="https://wa.me/5511966702230?text=Olá!%20Gostaria%20de%20tirar%20uma%20dúvida%20sobre%20meu%20veículo."
+             class="action-link"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp"></i> Conversar: (11) 96670-2230
+          </a>
+        </div>
+
+        <div class="workshop-card">
+          <span class="workshop-header-tag"><i class="fa-solid fa-calendar-check"></i> Horários</span>
+          <h3>Expediente</h3>
+          <p>
+            <strong>Segunda a Sexta-feira:</strong><br>
+            08:00 às 17:30 (Sem intervalo de almoço fechado)<br><br>
+            <strong>Sábado e Domingo:</strong> Fechado
+          </p>
+          <a href="https://wa.me/5511966702230?text=Olá!%20Quero%20combinar%20um%20horário%20para%20levar%20meu%20carro."
+             class="action-link"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i class="fa-solid fa-clock"></i> Agendar Horário
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NÓS -->
+  <section class="section-wrap" id="sobre">
+    <div class="about-wrap">
+      <div class="about-image-container">
+        <img src="https://images.unsplash.com/photo-1632823471565-1ecdf5c0d8b7?auto=format&fit=crop&w=1200&q=85"
+             alt="Oficina Mecânica DnD"
+             class="about-image-main">
+        <div class="about-badge-floating">
+          <div class="years">+20</div>
+          <div class="text">Anos de<br>Experiência</div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-tag">Nossa Trajetória</span>
+        <h2 class="section-title">Tradição, honestidade e <span>paixão por mecânica</span></h2>
+        <p>
+          A <strong>DnD Serviços Automotivos</strong> possui mais de duas décadas de atuação sólida no setor automotivo, construindo um relacionamento fundamentado na ética, conhecimento prático e transparência com cada motorista.
+        </p>
+        <p>
+          Sabemos o quanto seu carro é importante para sua rotina e família. Por isso, trabalhamos com diagnóstico criterioso: explicamos de forma simples e honesta o que realmente precisa ser reparado, sem empurrar trocas desnecessárias de peças.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature-item">
+            <i class="fa-solid fa-check-circle"></i> Diagnóstico com laudo transparente
+          </div>
+          <div class="about-feature-item">
+            <i class="fa-solid fa-check-circle"></i> Peças de marcas reconhecidas
+          </div>
+          <div class="about-feature-item">
+            <i class="fa-solid fa-check-circle"></i> Atendimento técnico e amigável
+          </div>
+          <div class="about-feature-item">
+            <i class="fa-solid fa-check-circle"></i> Garantia nos serviços executados
+          </div>
+        </div>
+
+        <a href="https://wa.me/5511966702230?text=Olá!%20Gostaria%20de%20conversar%20com%20a%20equipe%20da%20DnD."
+           class="btn-primary"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i class="fa-brands fa-whatsapp"></i> Falar com um Especialista
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div style="max-width: 1320px; margin: 0 auto; padding: 0 24px;">
+    <section class="cta-banner">
+      <div class="cta-banner-text">
+        <h2>Seu carro precisa de revisão ou está falhando?</h2>
+        <p>
+          Não espere o problema se agravar. Mande uma mensagem agora no nosso WhatsApp e receba orientações rápidas da nossa equipe!
+        </p>
+      </div>
+      <a href="https://wa.me/5511966702230?text=Olá!%20Meu%20carro%20está%20precisando%20de%20revisão/diagnóstico."
+         class="btn-cta-white"
+         target="_blank"
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp" style="color:#25d366; font-size: 20px;"></i> Chamar no WhatsApp
+      </a>
+    </section>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section class="section-wrap" id="faq" style="padding-top: 0;">
+    <div class="section-header">
+      <span class="section-tag">Tire Suas Dúvidas</span>
+      <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+      <p class="section-subtitle">
+        Respostas diretas para as perguntas mais comuns de nossos clientes.
+      </p>
     </div>
 
+    <div class="faq-container">
+      <details class="faq-item">
+        <summary>
+          <span>Como faço para solicitar um orçamento ou tirar dúvidas?</span>
+          <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </summary>
+        <div class="faq-answer">
+          Basta clicar em qualquer botão de WhatsApp da página ou enviar mensagem para o número <strong>(11) 96670-2230</strong>. Descreva o que está acontecendo com o carro (barulhos, luz de painel acesa, etc.) que nossa equipe técnica lhe atenderá prontamente.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>É necessário agendar previamente antes de levar o carro?</span>
+          <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </summary>
+        <div class="faq-answer">
+          Recomendamos fortemente nos avisar com antecedência pelo WhatsApp para reservarmos o box de atendimento e o equipamento de diagnóstico, proporcionando um serviço mais rápido e evitando tempo de espera.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Qual é a localização exata da oficina?</span>
+          <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </summary>
+        <div class="faq-answer">
+          Estamos situados na <strong>Rua Batávia, 807 – Parque Novo Oratório, Santo André – SP</strong>. É um local tranquilo, seguro e de fácil acesso para toda a região do ABC Paulista e Zona Leste de São Paulo.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Quais são os horários e dias de funcionamento?</span>
+          <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </summary>
+        <div class="faq-answer">
+          Atendemos de segunda a sexta-feira, das <strong>08:00 às 17:30</strong>. Aos sábados, domingos e feriados a oficina permanece fechada para descanso da equipe.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span>Como funciona o serviço de Coding para veículos Volkswagen e Audi?</span>
+          <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+        </summary>
+        <div class="faq-answer">
+          Conectamos scanners e softwares específicos para os módulos da plataforma VAG (VW/Audi). Avaliamos quais funções de conforto e personalização estão disponíveis de fábrica no seu modelo e efetuamos as ativações com segurança total e sem alterar a integridade eletrônica original do carro.
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- MODAL DOS SERVIÇOS -->
+  <div class="service-modal" id="serviceModal" onclick="closeService(event)">
+    <div class="service-modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-modal" aria-label="Fechar janela" onclick="closeService()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-media-wrap">
+        <img id="modalImage" src="" alt="Serviço">
+      </div>
+
+      <div class="service-modal-content">
+        <span class="modal-category-tag" id="modalBadge">Especialidade DnD</span>
+        <h2 id="modalTitle">Título do Serviço</h2>
+        <p id="modalText">Descrição completa do serviço.</p>
+
+        <div class="modal-actions">
+          <a class="btn-primary" id="modalWhatsAppBtn" href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp"></i> Quero um orçamento deste serviço
+          </a>
+          <button class="btn-secondary" style="color:#111; border-color:#d1d5db;" onclick="closeService()">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/5511966702230?text=Olá!%20Estou%20no%20site%20da%20DnD%20e%20gostaria%20de%20um%20atendimento."
+     class="whatsapp-floating"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Fale conosco pelo WhatsApp">
+    <span class="tooltip">Fale com a DnD agora!</span>
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
-<!-- FOOTER -->
-<footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col footer-brand">
+        <a href="#" class="brand-logo" style="margin-bottom: 16px;">
+          <span class="logo-letters">
+            <span class="d-white">D</span><span class="n-red">n</span><span class="d-white">D</span>
+          </span>
+          <div class="logo-sub">
+            <span>Serviços</span>
+            <small>Automotivos</small>
+          </div>
+        </a>
+        <p>
+          Excelência em manutenção mecânica, diagnóstico eletrônico computadorizado e cuidado dedicado com seu veículo há mais de 20 anos em Santo André.
+        </p>
+      </div>
 
-  <div>
+      <div class="footer-col">
+        <h3>Navegação</h3>
+        <ul class="footer-links">
+          <li><a href="#servicos"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Serviços</a></li>
+          <li><a href="#oficinas"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Onde Estamos</a></li>
+          <li><a href="#sobre"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Sobre a Oficina</a></li>
+          <li><a href="#faq"><i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> Dúvidas Frequentes</a></li>
+        </ul>
+      </div>
 
-    <h3>DnD Serviços Automotivos</h3>
+      <div class="footer-col">
+        <h3>Especialidades</h3>
+        <ul class="footer-links">
+          <li><a href="#servicos">Diagnóstico Computadorizado</a></li>
+          <li><a href="#servicos">Freios & Suspensão</a></li>
+          <li><a href="#servicos">Injeção Eletrônica</a></li>
+          <li><a href="#servicos">Coding VW & Audi</a></li>
+          <li><a href="#servicos">Ar Condicionado</a></li>
+        </ul>
+      </div>
 
-    <p>
-      Manutenção e serviços automotivos.
-    </p>
+      <div class="footer-col">
+        <h3>Contato & Localização</h3>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Rua Batávia, 807 – Pq. Novo Oratório, Santo André - SP</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>+55 (11) 96670-2230</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-clock"></i>
+          <span>Segunda a Sexta: 08:00 às 17:30</span>
+        </div>
+      </div>
+    </div>
 
-    <p>
-      📱 +55 11 96670-2230
-    </p>
+    <div class="footer-bottom">
+      <div>
+        © 2006 - 2026 <strong>DnD Serviços Automotivos</strong>. Todos os direitos reservados.
+      </div>
+      <div>
+        Oficina Mecânica Especializada em Santo André – SP
+      </div>
+    </div>
+  </footer>
 
-  </div>
+  <!-- JAVASCRIPT -->
+  <script>
+    function openService(card) {
+      const modal = document.getElementById('serviceModal');
+      const title = card.dataset.title;
+      const text = card.dataset.text;
+      const image = card.dataset.image;
+      const badge = card.dataset.badge || 'Especialidade DnD';
 
+      document.getElementById('modalImage').src = image;
+      document.getElementById('modalImage').alt = title;
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalText').textContent = text;
+      document.getElementById('modalBadge').textContent = badge;
 
-  <div>
+      // Personaliza a mensagem do WhatsApp para o serviço específico
+      const waBtn = document.getElementById('modalWhatsAppBtn');
+      const waMsg = encodeURIComponent(`Olá! Estava vendo o serviço "${title}" no site da DnD e gostaria de tirar uma dúvida ou pedir orçamento.`);
+      waBtn.href = `https://wa.me/5511966702230?text=${waMsg}`;
 
-    <h3>Navegação</h3>
-
-    <p>
-      <a href="#servicos">Serviços</a>
-    </p>
-
-    <p>
-      <a href="#oficinas">Oficina</a>
-    </p>
-
-    <p>
-      <a href="#faq">Dúvidas</a>
-    </p>
-
-  </div>
-
-
-  <div>
-
-    <h3>Endereço</h3>
-
-    <p>
-      Rua Batávia, 807<br>
-      Parque Novo Oratório<br>
-      Santo André - SP
-    </p>
-
-  </div>
-
-
-  <div class="copy">
-    © 2006 DnD Serviços Automotivos - Todos os direitos reservados.
-  </div>
-
-</footer>
-
-
-<script>
-
-function openService(card){
-
-  const modal =
-    document.getElementById('serviceModal');
-
-  document.getElementById('modalImage').src =
-    card.dataset.image;
-
-  document.getElementById('modalImage').alt =
-    card.dataset.title;
-
-  document.getElementById('modalTitle').textContent =
-    card.dataset.title;
-
-  document.getElementById('modalText').textContent =
-    card.dataset.text;
-
-  modal.classList.add('open');
-
-  document.body.style.overflow='hidden';
-}
-
-
-function closeService(event){
-
-  if(
-    event &&
-    event.target.closest('.service-modal-box')
-  ){
-    return;
-  }
-
-  document
-    .getElementById('serviceModal')
-    .classList.remove('open');
-
-  document.body.style.overflow='';
-}
-
-
-document.addEventListener(
-  'keydown',
-  function(e){
-
-    if(e.key==='Escape'){
-
-      document
-        .getElementById('serviceModal')
-        .classList.remove('open');
-
-      document.body.style.overflow='';
-
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-  }
-);
+    function closeService(event) {
+      if (event && event.target.closest('.service-modal-box')) {
+        return;
+      }
+      const modal = document.getElementById('serviceModal');
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
+    // Tecla ESC para fechar modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeService();
+      }
+    });
 
-/* FALLBACK PARA IMAGENS QUE NÃO CARREGAREM */
-
-document.addEventListener(
-  'DOMContentLoaded',
-  function(){
-
-    document
-      .querySelectorAll('.service-photo > img')
-      .forEach(function(img){
-
-        img.addEventListener(
-          'error',
-          function(){
-
-            const fallback =
-              document.createElement('div');
-
-            fallback.className =
-              'image-fallback';
-
-            fallback.textContent =
-              img.alt || 'Serviço automotivo';
-
-            img.replaceWith(fallback);
-
-          },
-          {once:true}
-        );
-
+    // Fallback gracioso para imagens que não carregarem
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.service-card-media img').forEach(function(img) {
+        img.addEventListener('error', function() {
+          const fallback = document.createElement('div');
+          fallback.className = 'image-fallback';
+          fallback.textContent = img.alt || 'DnD Serviços Automotivos';
+          img.replaceWith(fallback);
+        }, { once: true });
       });
-
-  }
-);
-
-</script>
+    });
+  </script>
 
 </body>
 </html>
