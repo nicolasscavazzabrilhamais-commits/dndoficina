@@ -1083,6 +1083,13 @@
     function initAdminData() {
       loadAppointments();
       loadVehiclesAndHistory();
+
+      // Atualiza automaticamente a lista de agendamentos a cada 20 segundos
+      if (!window._adminInterval) {
+        window._adminInterval = setInterval(() => {
+          loadAppointments();
+        }, 20000);
+      }
     }
 
     // 1. CARREGAR AGENDAMENTOS
